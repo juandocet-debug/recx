@@ -11,6 +11,10 @@
     .login-container{display:flex;justify-content:center;align-items:center;min-height:100vh}
     .login-card{background:#fff;padding:3rem;border-radius:20px;box-shadow:0 20px 40px rgba(0,0,0,.1);width:100%;max-width:400px;text-align:center}
     .login-logo{font-size:3rem;color:#667eea;margin-bottom:1rem}
+    body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh}
+    .login-container{display:flex;justify-content:center;align-items:center;min-height:100vh}
+    .login-card{background:#fff;padding:3rem;border-radius:20px;box-shadow:0 20px 40px rgba(0,0,0,.1);width:100%;max-width:400px;text-align:center}
+    .login-logo{font-size:3rem;color:#667eea;margin-bottom:1rem}
     .login-title{font-size:2rem;font-weight:700;color:#333;margin-bottom:.5rem}
     .login-subtitle{color:#666;margin-bottom:2rem}
     .form-group{margin-bottom:1.5rem;text-align:left}
@@ -23,10 +27,23 @@
     .btn-danger{background:#e53e3e;color:#fff}
     .app-container{display:none;min-height:100vh;background:#f8fafc}
     .sidebar{position:fixed;top:0;left:0;height:100vh;width:280px;background:linear-gradient(180deg,#1a202c 0%,#2d3748 100%);z-index:1000;overflow-y:auto;box-shadow:5px 0 20px rgba(0,0,0,.1)}
+    .form-group{margin-bottom:1.5rem;text-align:left}
+    .form-group label{display:block;margin-bottom:.5rem;font-weight:600;color:#333}
+    .form-control{width:100%;padding:12px 16px;border:2px solid #e1e5e9;border-radius:10px;font-size:16px}
+    .btn{padding:.6rem 1rem;border:none;border-radius:10px;font-weight:600;display:inline-flex;align-items:center;gap:.5rem;cursor:pointer}
+    .btn-login{width:100%;padding:12px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer}
+    .btn-primary{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff}
+    .btn-secondary{background:#e2e8f0;color:#4a5568}
+    .btn-danger{background:#e53e3e;color:#fff}
+    .app-container{display:none;min-height:100vh;background:#f8fafc}
+    .sidebar{position:fixed;top:0;left:0;height:100vh;width:280px;background:linear-gradient(180deg,#1a202c 0%,#2d3748 100%);z-index:1000;overflow-y:auto;box-shadow:5px 0 20px rgba(0,0,0,.1)}
     .sidebar-header{padding:1.5rem;text-align:center;border-bottom:1px solid #4a5568}
+    .sidebar-logo{font-size:2rem;color:#667eea;margin-bottom:.5rem}
     .sidebar-logo{font-size:2rem;color:#667eea;margin-bottom:.5rem}
     .sidebar-title{color:#fff;font-size:1.25rem;font-weight:700}
     .sidebar-nav{padding:1rem 0}
+    .nav-item{display:flex;align-items:center;padding:1rem 1.5rem;color:#cbd5e0;text-decoration:none;border-left:3px solid transparent; transition: background-color 0.3s, color 0.3s, border-left-color 0.3s;}
+    .nav-item.active,.nav-item:hover{background:rgba(102,126,234,.15);color:#fff;border-left-color:#667eea}
     .nav-item{display:flex;align-items:center;padding:1rem 1.5rem;color:#cbd5e0;text-decoration:none;border-left:3px solid transparent; transition: background-color 0.3s, color 0.3s, border-left-color 0.3s;}
     .nav-item.active,.nav-item:hover{background:rgba(102,126,234,.15);color:#fff;border-left-color:#667eea}
     .nav-item i{font-size:1.25rem;margin-right:1rem;width:20px}
@@ -38,20 +55,42 @@
     .main-content{margin-left:280px;min-height:100vh; transition: margin-left 0.3s ease;}
     .header{background:#fff;padding:1rem 2rem;box-shadow:0 2px 10px rgba(0,0,0,.1);display:flex;justify-content:space-between;align-items:center}
     .header-title{font-size:1.5rem;font-weight:700;color:#2d3748}
+    .header{background:#fff;padding:1rem 2rem;box-shadow:0 2px 10px rgba(0,0,0,.1);display:flex;justify-content:space-between;align-items:center}
+    .header-title{font-size:1.5rem;font-weight:700;color:#2d3748}
     .user-info{display:flex;gap:.75rem;align-items:center}
+    .user-avatar{width:40px;height:40px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:bold}
     .user-avatar{width:40px;height:40px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:bold}
     .content{padding:2rem}
     .dashboard-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.25rem}
     .dashboard-card{background:#fff;border-radius:16px;padding:1.5rem;box-shadow:0 10px 25px rgba(0,0,0,.08)}
+    .dashboard-card{background:#fff;border-radius:16px;padding:1.5rem;box-shadow:0 10px 25px rgba(0,0,0,.08)}
     .card-header{display:flex;align-items:center;margin-bottom:1rem}
+    .card-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-right:1rem;font-size:1.25rem;color:#fff}
     .card-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-right:1rem;font-size:1.25rem;color:#fff}
     .theme-docencia{background:linear-gradient(135deg,#48bb78 0%,#38a169 100%)}
     .theme-practicas{background:linear-gradient(135deg,#4299e1 0%,#3182ce 100%)}
     .theme-salidas{background:linear-gradient(135deg,#ed8936 0%,#dd6b20 100%)}
     .theme-admin{background:linear-gradient(135deg,#38b2ac 0%,#319795 100%)}
     .data-section{background:#fff;border-radius:16px;padding:1.5rem;box-shadow:0 10px 25px rgba(0,0,0,.08);display:none}
+    .data-section{background:#fff;border-radius:16px;padding:1.5rem;box-shadow:0 10px 25px rgba(0,0,0,.08);display:none}
     .section-header{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1rem;flex-wrap:wrap}
     table{width:100%;border-collapse:collapse}
+    th,td{padding:.85rem;border-bottom:1px solid #e2e8f0;text-align:left}
+    th{background:#f7fafc}
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;justify-content:center;align-items:center;z-index:2000}
+    .modal-content{background:#fff;border-radius:16px;padding:1.25rem;width:92%;max-width:960px;max-height:90vh;overflow:auto}
+    .modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+    .form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-bottom:.75rem}
+    .file-upload-box{border:2px dashed #cbd5e0;border-radius:10px;padding:1rem;text-align:center;height:150px;display:flex;flex-direction:column;justify-content:center;align-items:center;background:#f8fafc;cursor:pointer;position:relative;overflow:hidden}
+    .file-upload-box input{display:none}
+    .file-upload-box .upload-icon{font-size:2rem;color:#cbd5e0;margin-bottom:.5rem}
+    .file-upload-box .upload-text{font-weight:600;color:#4a5568;font-size:.9rem}
+    .file-upload-box .upload-preview{position:absolute;width:100%;height:100%;object-fit:cover;border-radius:8px}
+    .preview-grid{display:grid;grid-template-columns:2fr 1fr;gap:1rem}
+    .preview-pdf-container{width:100%;height:380px;border:1px solid #e2e8f0;border-radius:8px}
+    .pill{display:inline-block;padding:.2rem .5rem;border-radius:9999px;background:#edf2f7;color:#4a5568;font-size:.75rem;font-weight:600}
+    #jsErrorOverlay{position:fixed;left:12px;right:12px;bottom:12px;background:#111;color:#fff;padding:12px 14px;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.35);font-family:ui-monospace,Menlo,Consolas,monospace;max-height:45vh;overflow:auto;white-space:pre-wrap}
+    .hint{font-size:.85rem;color:#4a5568}
     th,td{padding:.85rem;border-bottom:1px solid #e2e8f0;text-align:left}
     th{background:#f7fafc}
     .modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;justify-content:center;align-items:center;z-index:2000}
@@ -89,6 +128,18 @@
         </div>
         <div class="form-group"><label for="username">Usuario</label><input id="username" class="form-control" required></div>
         <div class="form-group"><label for="password">Contraseña</label><input type="password" id="password" class="form-control" required></div>
+        <div class="form-group">
+          <label for="userRole">Tipo de Usuario</label>
+          <select id="userRole" class="form-control" required>
+            <option value="">Seleccionar rol...</option>
+            <option value="estudiante">Estudiante</option>
+            <option value="profesor">Profesor</option>
+            <option value="coordinador">Coordinador</option>
+            <option value="administrador">Administrador</option>
+          </select>
+        </div>
+        <div class="form-group"><label for="username">Usuario</label><input id="username" class="form-control" required></div>
+        <div class="form-group"><label for="password">Contraseña</label><input type="password" id="password" class="form-control" required></div>
         <button class="btn-login" type="submit"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</button>
       </form>
     </div>
@@ -102,7 +153,62 @@
       </div>
 
       <!-- SIDEBAR -->
+
+      <!-- SIDEBAR -->
       <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" onclick="showSection('dashboard')">
+          <i class="fas fa-home"></i><span class="nav-text">Inicio</span>
+        </a>
+
+        <!-- Gestión de la Docencia -->
+        <a href="#" class="nav-item" onclick="toggleSubmenu(event)">
+          <i class="fas fa-chalkboard-teacher"></i>
+          <span class="nav-text">Gestión de la Docencia</span>
+          <i class="fas fa-chevron-down nav-arrow"></i>
+        </a>
+        <div class="submenu">
+          <a href="#" class="nav-item" onclick="showDataSection('acta')">
+            <i class="fas fa-file-signature"></i><span class="nav-text">Registro de Actas</span>
+          </a>
+        </div>
+
+        <!-- Prácticas -->
+        <a href="#" class="nav-item" onclick="toggleSubmenu(event)">
+          <i class="fas fa-briefcase"></i>
+          <span class="nav-text">Prácticas</span>
+          <i class="fas fa-chevron-down nav-arrow"></i>
+        </a>
+        <div class="submenu">
+          <a href="#" class="nav-item" onclick="showDataSection('sites')">
+            <i class="fas fa-building"></i><span class="nav-text">Administrar Sitio de Práctica</span>
+          </a>
+          <a href="#" class="nav-item" onclick="showDataSection('bitacoras')">
+            <i class="fas fa-book"></i><span class="nav-text">Bitácora de Práctica</span>
+          </a>
+        </div>
+
+        <!-- Gestión de Usuarios -->
+        <a href="#" class="nav-item" onclick="toggleSubmenu(event)">
+          <i class="fas fa-user-cog"></i>
+          <span class="nav-text">Gestión de Usuarios</span>
+          <i class="fas fa-chevron-down nav-arrow"></i>
+        </a>
+        <div class="submenu">
+          <a href="#" class="nav-item" onclick="showDataSection('roles-permisos')">
+            <i class="fas fa-user-shield"></i><span class="nav-text">Profesores</span>
+          </a>
+          <a href="#" class="nav-item" onclick="showDataSection('estudiantes')">
+            <i class="fas fa-user-graduate"></i><span class="nav-text">Estudiantes</span>
+          </a>
+        </div>
+
+        <!-- Accesos directos -->
+        <a href="#" class="nav-item" onclick="showDataSection('documentos')">
+          <i class="fas fa-folder-plus"></i><span class="nav-text">Gestión de Documentos</span>
+        </a>
+        <a href="#" class="nav-item" onclick="showDataSection('admin-grupos')">
+          <i class="fas fa-users-cog"></i><span class="nav-text">Administración de Grupos</span>
+        </a>
         <a href="#" class="nav-item active" onclick="showSection('dashboard')">
           <i class="fas fa-home"></i><span class="nav-text">Inicio</span>
         </a>
@@ -168,12 +274,43 @@
           <button class="btn btn-secondary" onclick="logout()" title="Cerrar Sesión">
             <i class="fas fa-sign-out-alt"></i>
           </button>
+          <button class="btn btn-secondary" onclick="logout()" title="Cerrar Sesión">
+            <i class="fas fa-sign-out-alt"></i>
+          </button>
         </div>
       </div>
+
 
       <div class="content">
         <div id="dashboard">
           <div class="dashboard-grid">
+            <div class="dashboard-card">
+              <div class="card-header"><div class="card-icon theme-docencia"><i class="fas fa-chalkboard-teacher"></i></div><div class="card-title">Gestión de Docencia</div></div>
+              <ul>
+                <li><a href="#" onclick="showDataSection('acta')">Registro de actas estudiantes</a></li>
+              </ul>
+            </div>
+            <div class="dashboard-card">
+              <div class="card-header"><div class="card-icon theme-practicas"><i class="fas fa-folder-plus"></i></div><div class="card-title">Documentos</div></div>
+              <ul>
+                <li><a href="#" onclick="showDataSection('documentos')">Gestión de Documentos</a></li>
+              </ul>
+            </div>
+            <div class="dashboard-card">
+              <div class="card-header"><div class="card-icon theme-salidas"><i class="fas fa-users-cog"></i></div><div class="card-title">Grupos</div></div>
+              <ul>
+                <li><a href="#" onclick="showDataSection('admin-grupos')">Administración de Grupos</a></li>
+              </ul>
+            </div>
+            <div class="dashboard-card">
+              <div class="card-header"><div class="card-icon theme-admin"><i class="fas fa-user-shield"></i></div><div class="card-title">Profesores</div></div>
+              <ul>
+                <li><a href="#" onclick="showDataSection('roles-permisos')">Gestión de Profesores</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
             <div class="dashboard-card">
               <div class="card-header"><div class="card-icon theme-docencia"><i class="fas fa-chalkboard-teacher"></i></div><div class="card-title">Gestión de Docencia</div></div>
               <ul>
@@ -207,7 +344,15 @@
               <h2 class="section-title" id="sectionTitle">Gestión de Datos</h2>
               <button class="btn btn-secondary" onclick="showSection('dashboard')"><i class="fas fa-arrow-left"></i> Volver</button>
             </div>
+            <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+              <h2 class="section-title" id="sectionTitle">Gestión de Datos</h2>
+              <button class="btn btn-secondary" onclick="showSection('dashboard')"><i class="fas fa-arrow-left"></i> Volver</button>
+            </div>
             <div class="section-actions" style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+              <div id="listSearchContainer" style="display:none;align-items:center;gap:.5rem">
+                <input id="listSearch" class="form-control" placeholder="Buscar estudiante por nombre, documento o código" style="min-width:260px">
+                <button class="btn btn-secondary" id="listSearchClear" type="button"><i class="fas fa-times"></i></button>
+              </div>
               <div id="listSearchContainer" style="display:none;align-items:center;gap:.5rem">
                 <input id="listSearch" class="form-control" placeholder="Buscar estudiante por nombre, documento o código" style="min-width:260px">
                 <button class="btn btn-secondary" id="listSearchClear" type="button"><i class="fas fa-times"></i></button>
@@ -216,7 +361,19 @@
               <button id="btnExport" class="btn btn-secondary" title="Descargar lista">
                 <i class="fas fa-file-excel"></i> Exportar Excel
               </button>
+              <button id="btnExport" class="btn btn-secondary" title="Descargar lista">
+                <i class="fas fa-file-excel"></i> Exportar Excel
+              </button>
             </div>
+          </div>
+          <table id="dataTable">
+            <thead id="tableHeader"></thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+          <div style="display:flex;justify-content:center;gap:1rem;margin-top:1rem">
+            <button class="btn btn-secondary" id="prevBtn" onclick="prevPage()"><i class="fas fa-chevron-left"></i> Anterior</button>
+            <span id="pageInfo">Página 1 de 1</span>
+            <button class="btn btn-secondary" id="nextBtn" onclick="nextPage()">Siguiente <i class="fas fa-chevron-right"></i></button>
           </div>
           <table id="dataTable">
             <thead id="tableHeader"></thead>
@@ -233,12 +390,20 @@
   </div>
 
   <!-- Modal de datos -->
+  <!-- Modal de datos -->
   <div id="dataModal" class="modal">
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title" id="modalTitle">Nuevo Registro</h3>
         <button class="btn btn-secondary" onclick="hideModal()"><i class="fas fa-times"></i></button>
       </div>
+      <form id="dataForm">
+        <!-- Vincular documento base (para actas) -->
+        <div id="formRowDocLink" class="form-row" style="display:none">
+          <div class="form-group" style="grid-column:1/-1">
+            <label for="linkedDoc">Seleccionar Documento Base (autocompleta la fecha)</label>
+            <select id="linkedDoc" class="form-control"></select>
+          </div>
       <form id="dataForm">
         <!-- Vincular documento base (para actas) -->
         <div id="formRowDocLink" class="form-row" style="display:none">
@@ -275,10 +440,42 @@
             <label for="recordDate">Fecha</label>
             <input type="date" id="recordDate" class="form-control">
           </div>
+
+        <!-- Campos generales / actas / documentos / grupos -->
+        <div class="form-row">
+          <div id="formGroupTitle" class="form-group">
+            <label id="labelTitle" for="recordTitle">Título</label>
+            <input id="recordTitle" class="form-control">
+          </div>
+          <div id="formGroupType" class="form-group">
+            <label for="recordType">Tipo de Documento</label>
+            <select id="recordType" class="form-control">
+              <option value="Acta Estudiantes">Acta Estudiantes</option>
+              <option value="Informe">Informe</option>
+              <option value="Memorando">Memorando</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+          <div id="formGroupGroup" class="form-group">
+            <label for="recordGroup">Grupo (Cohorte)</label>
+            <select id="recordGroup" class="form-control"></select>
+          </div>
+          <div id="formGroupAdvisor" class="form-group">
+            <label for="recordAdvisor">Docente Asignado</label>
+            <select id="recordAdvisor" class="form-control"></select>
+          </div>
+          <div id="formGroupDate" class="form-group">
+            <label for="recordDate">Fecha</label>
+            <input type="date" id="recordDate" class="form-control">
+          </div>
         </div>
 
         <!-- Detalles de acta -->
+        <!-- Detalles de acta -->
         <div id="formGroupActaDetails" style="display:none">
+          <div class="form-group"><label for="recordLogros">Logros</label><textarea id="recordLogros" class="form-control" rows="2"></textarea></div>
+          <div class="form-group"><label for="recordAcuerdos">Acuerdos</label><textarea id="recordAcuerdos" class="form-control" rows="2"></textarea></div>
+          <div class="form-group"><label for="recordSintesis">Compromisos / Síntesis</label><textarea id="recordSintesis" class="form-control" rows="2"></textarea></div>
           <div class="form-group"><label for="recordLogros">Logros</label><textarea id="recordLogros" class="form-control" rows="2"></textarea></div>
           <div class="form-group"><label for="recordAcuerdos">Acuerdos</label><textarea id="recordAcuerdos" class="form-control" rows="2"></textarea></div>
           <div class="form-group"><label for="recordSintesis">Compromisos / Síntesis</label><textarea id="recordSintesis" class="form-control" rows="2"></textarea></div>
@@ -287,9 +484,269 @@
         <!-- Descripción genérica -->
         <div id="formGroupDescription" class="form-group" style="display:none">
           <label id="labelDescription" for="recordDescription">Descripción</label>
+        <!-- Descripción genérica -->
+        <div id="formGroupDescription" class="form-group" style="display:none">
+          <label id="labelDescription" for="recordDescription">Descripción</label>
           <textarea id="recordDescription" class="form-control" rows="3"></textarea>
         </div>
 
+        <!-- Archivos (acta + fotos) -->
+        <div id="formRowFiles" class="form-row" style="display:none">
+          <div class="form-group">
+            <label>Acta (PDF)</label>
+            <label class="file-upload-box" for="actaPdf">
+              <input type="file" id="actaPdf" accept="application/pdf" onchange="previewFileName(event,'pdfFileName')">
+              <div class="upload-content"><i class="fas fa-file-pdf upload-icon"></i><span class="upload-text" id="pdfFileName">Seleccionar PDF</span></div>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>Evidencia Fotográfica 1</label>
+            <label class="file-upload-box" for="photo1">
+              <input type="file" id="photo1" accept="image/*" onchange="previewImage(event,'photoPreview1')">
+              <img id="photoPreview1" class="upload-preview" style="display:none" alt="Vista previa 1">
+              <div class="upload-content"><i class="fas fa-camera upload-icon"></i><span class="upload-text">Seleccionar foto</span></div>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>Evidencia Fotográfica 2</label>
+            <label class="file-upload-box" for="photo2">
+              <input type="file" id="photo2" accept="image/*" onchange="previewImage(event,'photoPreview2')">
+              <img id="photoPreview2" class="upload-preview" style="display:none" alt="Vista previa 2">
+              <div class="upload-content"><i class="fas fa-camera upload-icon"></i><span class="upload-text">Seleccionar foto</span></div>
+            </label>
+          </div>
+        </div>
+
+        <!-- EXCLUSIVO Sitios de Práctica -->
+        <div id="formGroupSiteDetails" style="display:none">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="siteCompanyName">Nombre de la Empresa</label>
+              <input type="text" id="siteCompanyName" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="siteDepartment">Área / Departamento</label>
+              <input type="text" id="siteDepartment" class="form-control">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="siteContactName">Nombre del Contacto</label>
+              <input type="text" id="siteContactName" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="siteProfessor">Profesor Tutor</label>
+              <select id="siteProfessor" class="form-control"></select>
+            </div>
+          </div>
+        </div>
+
+        <!-- EXCLUSIVO Bitácora de Práctica -->
+        <div id="formGroupBitacora" style="display:none">
+          <h4 style="margin:.5rem 0">Datos de la práctica</h4>
+          <div class="form-row">
+            <div class="form-group" style="grid-column:1/-1">
+              <label>Búsqueda rápida de estudiante por código</label>
+              <div class="hint">Escribe el <strong>código</strong> y pulsa <em>Buscar</em> para cargar los datos automáticamente.</div>
+              <div style="display:flex; gap:.5rem; align-items:center; flex-wrap:wrap; margin-top:.25rem">
+                <input id="bitSearchCode" class="form-control" placeholder="Código del estudiante...">
+                <button type="button" class="btn btn-secondary" onclick="lookupStudentByCode()"><i class="fas fa-search"></i> Buscar</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="bitSite">Sitio de práctica</label>
+              <select id="bitSite" class="form-control"></select>
+            </div>
+            <div class="form-group">
+              <label for="bitProfessor">Profesor tutor</label>
+              <select id="bitProfessor" class="form-control"></select>
+            </div>
+          </div>
+
+          <h4 style="margin:.5rem 0">Datos del estudiante</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="studentCode">Código</label>
+              <input id="studentCode" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="studentName">Nombre completo</label>
+              <input id="studentName" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="studentId">Número de identificación</label>
+              <input id="studentId" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="studentProgram">Programa/Carrera</label>
+              <input id="studentProgram" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="studentSemester">Semestre/Año</label>
+              <input id="studentSemester" class="form-control" placeholder="Ej: 7° / 2025-1">
+            </div>
+            <div class="form-group">
+              <label for="studentEmail">Correo electrónico</label>
+              <input id="studentEmail" type="email" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="studentPhone">Teléfono</label>
+              <input id="studentPhone" class="form-control">
+            </div>
+          </div>
+
+          <h4 style="margin:.5rem 0">Seguimiento</h4>
+          <div class="form-group">
+            <label for="logObjectives">Objetivos de la práctica</label>
+            <textarea id="logObjectives" class="form-control" rows="2"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="logActivities">Descripción y seguimiento de actividades</label>
+            <textarea id="logActivities" class="form-control" rows="3"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="logHours">Horas acumuladas</label>
+              <input type="number" id="logHours" class="form-control" min="0" step="1">
+            </div>
+            <div class="form-group">
+              <label for="logComments">Comentarios del supervisor</label>
+              <textarea id="logComments" class="form-control" rows="2"></textarea>
+            </div>
+          </div>
+
+          <h4 style="margin:.5rem 0">Evidencias (Actas)</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Acta 1ª visita (PDF)</label>
+              <label class="file-upload-box" for="visit1Pdf">
+                <input type="file" id="visit1Pdf" accept="application/pdf" onchange="previewFileName(event,'visit1FileName')">
+                <div class="upload-content"><i class="fas fa-file-pdf upload-icon"></i><span class="upload-text" id="visit1FileName">Seleccionar PDF</span></div>
+              </label>
+            </div>
+            <div class="form-group">
+              <label>Acta visita final (PDF)</label>
+              <label class="file-upload-box" for="visit2Pdf">
+                <input type="file" id="visit2Pdf" accept="application/pdf" onchange="previewFileName(event,'visit2FileName')">
+                <div class="upload-content"><i class="fas fa-file-pdf upload-icon"></i><span class="upload-text" id="visit2FileName">Seleccionar PDF</span></div>
+              </label>
+            </div>
+          </div>
+
+          <h4 style="margin:.5rem 0">Evaluación (1 a 5)</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="evalProactividad">Proactividad e iniciativa</label>
+              <input type="number" id="evalProactividad" class="form-control" min="1" max="5" step="1">
+            </div>
+            <div class="form-group">
+              <label for="evalResponsabilidad">Responsabilidad y puntualidad</label>
+              <input type="number" id="evalResponsabilidad" class="form-control" min="1" max="5" step="1">
+            </div>
+            <div class="form-group">
+              <label for="evalTecnicas">Habilidades técnicas</label>
+              <input type="number" id="evalTecnicas" class="form-control" min="1" max="5" step="1">
+            </div>
+            <div class="form-group">
+              <label for="evalEquipo">Trabajo en equipo</label>
+              <input type="number" id="evalEquipo" class="form-control" min="1" max="5" step="1">
+            </div>
+            <div class="form-group">
+              <label for="evalResolucion">Resolución de problemas</label>
+              <input type="number" id="evalResolucion" class="form-control" min="1" max="5" step="1">
+            </div>
+            <div class="form-group">
+              <label for="evalFinal">Calificación final</label>
+              <input type="number" id="evalFinal" class="form-control" min="1" max="5" step="0.1">
+              <div class="hint" style="margin-top:.25rem">
+                Rúbrica: 1 Deficiente — 2 Regular — 3 Bueno — 4 Muy bueno — 5 Excelente
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EXCLUSIVO Estudiantes -->
+        <div id="formGroupStudent" style="display:none">
+          <h4 style="margin:.5rem 0">Datos del estudiante</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="stuFirstName">Nombre</label>
+              <input id="stuFirstName" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="stuLastName">Apellido</label>
+              <input id="stuLastName" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="stuDocument">Documento</label>
+              <input id="stuDocument" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="stuCode">Código</label>
+              <input id="stuCode" class="form-control">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="stuGroup">Grupo / Cohorte</label>
+              <select id="stuGroup" class="form-control"></select>
+            </div>
+            <div class="form-group">
+              <label for="stuAdvisorName">Asesor de cohorte</label>
+              <input id="stuAdvisorName" class="form-control" readonly placeholder="Se asigna por el grupo">
+              <input id="stuAdvisorId" type="hidden">
+            </div>
+            <div class="form-group">
+              <label for="stuProgram">Programa/Carrera</label>
+              <input id="stuProgram" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="stuSemester">Semestre/Año</label>
+              <input id="stuSemester" class="form-control" placeholder="Ej: 7° / 2025-1">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="stuEmail">Correo</label>
+              <input id="stuEmail" type="email" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="stuPhone">Teléfono</label>
+              <input id="stuPhone" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="stuAddress">Dirección</label>
+              <input id="stuAddress" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="stuNotes">Notas/Observaciones</label>
+              <input id="stuNotes" class="form-control">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group" style="grid-column:1/-1">
+              <label>Foto</label>
+              <label class="file-upload-box" for="stuPhoto">
+                <input type="file" id="stuPhoto" accept="image/*" onchange="previewImage(event,'stuPhotoPreview')">
+                <img id="stuPhotoPreview" class="upload-preview" style="display:none" alt="Foto estudiante">
+                <div class="upload-content"><i class="fas fa-camera upload-icon"></i><span class="upload-text">Subir foto</span></div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Extras de grupo -->
+        <div id="formGroupGroupExtras" style="display:none">
+          <div class="form-group"><label for="groupFeatures">Características, condiciones y elementos del grupo</label><textarea id="groupFeatures" class="form-control" rows="3"></textarea></div>
+          <div class="form-group"><label for="groupAdvisor">Asesor de cohorte</label><select id="groupAdvisor" class="form-control"></select></div>
+        </div>
+
+        <div style="display:flex;justify-content:flex-end;gap:.5rem;margin-top:.5rem">
+          <button type="button" class="btn btn-secondary" onclick="hideModal()"><i class="fas fa-times"></i> Cancelar</button>
+          <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar</button>
         <!-- Archivos (acta + fotos) -->
         <div id="formRowFiles" class="form-row" style="display:none">
           <div class="form-group">
@@ -575,10 +1032,37 @@
           <h4 style="margin-top:1rem">Evidencias</h4>
           <div id="previewPhotos"></div>
         </div>
+    </div>
+  </div>
+
+  <!-- Modal de vista previa Acta -->
+  <div id="previewModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="previewTitle">Vista Previa del Acta</h3>
+        <button class="btn btn-secondary" onclick="hidePreviewModal()"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="preview-grid">
+        <div>
+          <h4>Acta PDF</h4>
+          <div class="preview-pdf-container"><iframe id="previewPdfFrame" style="width:100%;height:100%;border:none"></iframe></div>
+          <div style="margin-top:.75rem">
+            <h5>Logros</h5><p id="previewLogros" class="pill" style="display:block"></p>
+            <h5>Acuerdos</h5><p id="previewAcuerdos" class="pill" style="display:block"></p>
+            <h5>Compromisos / Síntesis</h5><p id="previewSintesis" class="pill" style="display:block"></p>
+          </div>
+        </div>
+        <div>
+          <h4>Detalles</h4>
+          <div id="previewGeneralDetails"></div>
+          <h4 style="margin-top:1rem">Evidencias</h4>
+          <div id="previewPhotos"></div>
+        </div>
       </div>
     </div>
   </div>
 
+  <!-- Modal Profesores -->
   <!-- Modal Profesores -->
   <div id="profModal" class="modal">
     <div class="modal-content">
@@ -586,6 +1070,10 @@
         <h3 class="modal-title" id="profModalTitle">Registrar Profesor</h3>
         <button class="btn btn-secondary" onclick="hideProfModal()"><i class="fas fa-times"></i></button>
       </div>
+      <form id="profForm">
+        <div class="form-row">
+          <div class="form-group"><label>Nombre</label><input id="profName" class="form-control" required></div>
+          <div class="form-group"><label>Email</label><input id="profEmail" type="email" class="form-control" required></div>
       <form id="profForm">
         <div class="form-row">
           <div class="form-group"><label>Nombre</label><input id="profName" class="form-control" required></div>
@@ -601,7 +1089,22 @@
             <option value="coordinador">Coordinador</option>
             <option value="administrador">Administrador</option>
           </select>
+        <div class="form-group"><label>Foto</label><input id="profPhoto" type="file" accept="image/*" class="form-control"></div>
+        <div class="form-group"><label>Especialidad</label><input id="profSpecialty" class="form-control"></div>
+        <div class="form-group"><label>Datos del CV</label><textarea id="profCv" class="form-control" rows="3"></textarea></div>
+        <div class="form-group"><label>Perfil</label><textarea id="profProfile" class="form-control" rows="3"></textarea></div>
+        <div class="form-group"><label>Rol en el sistema</label>
+          <select id="profRole" class="form-control">
+            <option value="profesor">Profesor</option>
+            <option value="coordinador">Coordinador</option>
+            <option value="administrador">Administrador</option>
+          </select>
         </div>
+        <div style="display:flex;justify-content:flex-end;gap:.5rem;margin-top:.5rem">
+          <button type="button" class="btn btn-secondary" onclick="hideProfModal()">Cancelar</button>
+          <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar</button>
+        </div>
+      </form>
         <div style="display:flex;justify-content:flex-end;gap:.5rem;margin-top:.5rem">
           <button type="button" class="btn btn-secondary" onclick="hideProfModal()">Cancelar</button>
           <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar</button>
@@ -627,6 +1130,7 @@
     let allData={}, groups=[], professors=[];
     let studentSearchQuery='';
     let editState = { section:null, id:null }; // estado de edición genérica
+    let editingProfessorId = null;            // edición de profesores
     let editingProfessorId = null;            // edición de profesores
 
     const users={
@@ -740,6 +1244,7 @@
       document.querySelectorAll('.sidebar-nav .nav-item').forEach(el => el.classList.remove('active'));
       const activeLink = Array.from(document.querySelectorAll('.nav-item')).find(el => el.onclick && el.onclick.toString().includes(`'${sectionType}'`));
       if (activeLink) activeLink.classList.add('active');
+      if (activeLink) activeLink.classList.add('active');
 
       const titles={
         acta:'Registro de Actas Estudiantiles',
@@ -755,6 +1260,7 @@
       document.getElementById('dashboard').style.display='none';
       document.getElementById('dataSection').style.display='block';
 
+      // Buscador superior sólo en Estudiantes
       // Buscador superior sólo en Estudiantes
       document.getElementById('listSearchContainer').style.display = (sectionType==='estudiantes') ? 'flex' : 'none';
 
@@ -781,6 +1287,7 @@
       tbody.innerHTML='';
       let data=allData[currentSection]||[]; let headers=[]; let renderRow; 
 
+
       if(currentSection==='acta'){
         headers=['ID','Cohorte','Docente','Fecha','Archivos','Acciones'];
         renderRow=item=>{
@@ -795,11 +1302,14 @@
       } else if(currentSection==='documentos'){
         headers=['ID','Título','Tipo','Fecha Creación','Propósito','Acciones'];
         renderRow=item=>`<td>#${item.id}</td><td>${item.title}</td><td><span class='pill'>${item.type}</span></td><td>${new Date(item.date).toLocaleDateString('es-ES')}</td><td>${(item.purpose||'').slice(0,60)}...</td>
+        headers=['ID','Título','Tipo','Fecha Creación','Propósito','Acciones'];
+        renderRow=item=>`<td>#${item.id}</td><td>${item.title}</td><td><span class='pill'>${item.type}</span></td><td>${new Date(item.date).toLocaleDateString('es-ES')}</td><td>${(item.purpose||'').slice(0,60)}...</td>
         <td>
           <button class='btn btn-primary' onclick="startEdit('documentos','${item.id}')" title="Editar"><i class='fas fa-edit'></i></button>
           <button class='btn btn-danger' onclick="deleteRecord(${item.id})" title="Eliminar"><i class='fas fa-trash'></i></button>
         </td>`;
       } else if(currentSection==='admin-grupos'){
+        headers=['ID','Cohorte','Asesor','Fecha Creación','Acciones']; data=groups;
         headers=['ID','Cohorte','Asesor','Fecha Creación','Acciones']; data=groups;
         renderRow=item=>{
           const adv=professors.find(p=>p.id===item.advisorId);
@@ -810,6 +1320,8 @@
           </td>`;
         };
       } else if(currentSection==='roles-permisos'){
+        headers=['Foto','Nombre','Perfil','Acciones']; data=professors;
+        renderRow=item=>`<td>${item.photo?`<img src='${item.photo}' style='width:40px;height:40px;border-radius:50%'>`:`<div class='user-avatar' style='width:40px;height:40px'>${item.name.charAt(0)}</div>`}</td><td>${item.name}</td><td>${item.profile||''}</td>
         headers=['Foto','Nombre','Perfil','Acciones']; data=professors;
         renderRow=item=>`<td>${item.photo?`<img src='${item.photo}' style='width:40px;height:40px;border-radius:50%'>`:`<div class='user-avatar' style='width:40px;height:40px'>${item.name.charAt(0)}</div>`}</td><td>${item.name}</td><td>${item.profile||''}</td>
         <td>
@@ -883,7 +1395,75 @@
               <button class='btn btn-danger' onclick="deleteRecord('${s.id}')" title="Eliminar"><i class='fas fa-trash'></i></button>
             </td>`;
         };
+      } else if(currentSection==='sites'){
+        headers=['Empresa','Departamento','Contacto','Profesor','Acciones'];
+        data = allData.sites || [];
+        renderRow = item => {
+          const prof = (professors || []).find(p => p.id === item.professorId);
+          return `
+            <td>${item.companyName || ''}</td>
+            <td>${item.department || ''}</td>
+            <td>${item.contactName || ''}</td>
+            <td>${prof ? prof.name : 'N/A'}</td>
+            <td>
+              <button class='btn btn-primary' onclick="startEdit('sites','${item.id}')" title="Editar"><i class='fas fa-edit'></i></button>
+              <button class='btn btn-danger' onclick="deleteRecord('${item.id}')" title="Eliminar"><i class='fas fa-trash'></i></button>
+            </td>`;
+        };
+      } else if(currentSection==='bitacoras'){
+        headers=['Código','Estudiante','Programa','Semestre','Sitio','Profesor','Horas','Calif. Final','Acciones'];
+        data = allData.bitacoras || [];
+        renderRow = item => {
+          const site = (allData.sites||[]).find(s=>s.id===item.siteId);
+          const prof = (professors||[]).find(p=>p.id===item.professorId);
+          return `
+            <td>${item.student.code}</td>
+            <td>${item.student.name}</td>
+            <td>${item.student.program}</td>
+            <td>${item.student.semester}</td>
+            <td>${site?site.companyName:'N/A'}</td>
+            <td>${prof?prof.name:'N/A'}</td>
+            <td>${item.hours||0}</td>
+            <td>${item.eval?.final??''}</td>
+            <td>
+              <button class='btn btn-primary' onclick="startEdit('bitacoras','${item.id}')" title="Editar"><i class='fas fa-edit'></i></button>
+              <button class='btn btn-danger' onclick="deleteRecord('${item.id}')" title="Eliminar"><i class='fas fa-trash'></i></button>
+            </td>`;
+        };
+      } else if(currentSection==='estudiantes'){
+        headers=['Foto','Código','Nombre','Documento','Programa','Grupo','Asesor','Contacto','Acciones'];
+        let list = allData.estudiantes || [];
+        if(studentSearchQuery){
+          list = list.filter(s=>{
+            const hay = [
+              s.code, s.firstName+' '+s.lastName,
+              s.document, s.program
+            ].join(' ').toLowerCase();
+            return hay.includes(studentSearchQuery);
+          });
+        }
+        data = list;
+        renderRow = s=>{
+          const adv = professors.find(p=>p.id===s.advisorId);
+          const grp = groups.find(g=>g.id===s.groupId);
+          const foto = s.photo ? `<img src='${s.photo}' style='width:40px;height:40px;border-radius:50%'>`
+                               : `<div class='user-avatar' style='width:40px;height:40px'>${(s.firstName||'?').charAt(0)}</div>`;
+          return `
+            <td>${foto}</td>
+            <td>${s.code||''}</td>
+            <td>${s.firstName||''} ${s.lastName||''}</td>
+            <td>${s.document||''}</td>
+            <td>${s.program||''}</td>
+            <td>${grp?grp.name:''}</td>
+            <td>${adv?adv.name:''}</td>
+            <td>${s.email||''} ${s.phone?(' / '+s.phone):''}</td>
+            <td>
+              <button class='btn btn-primary' onclick="startEdit('estudiantes','${s.id}')" title="Editar"><i class='fas fa-edit'></i></button>
+              <button class='btn btn-danger' onclick="deleteRecord('${s.id}')" title="Eliminar"><i class='fas fa-trash'></i></button>
+            </td>`;
+        };
       }
+
 
       thead.innerHTML=`<tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr>`;
       const start=(currentPage-1)*itemsPerPage; const pageData=data.slice(start,start+itemsPerPage);
@@ -907,6 +1487,12 @@
       const total=(currentSection==='admin-grupos'?groups.length:(allData[currentSection]?allData[currentSection].length:0));
       const totalPages=Math.max(1,Math.ceil(total/itemsPerPage));
       if(currentPage<totalPages){currentPage++;loadTableData();}
+    }
+
+    // ---- EDICIÓN GENÉRICA ----
+    function startEdit(section, id){
+      editState = { section, id };
+      showModal();
     }
 
     // ---- EDICIÓN GENÉRICA ----
@@ -1092,13 +1678,501 @@
           }
         }
       }
+      ['photoPreview1','photoPreview2','stuPhotoPreview'].forEach(pid=>{
+        const p=document.getElementById(pid); if(!p) return;
+        p.style.display='none'; p.src='';
+        const cont=p.closest('.file-upload-box')?.querySelector('.upload-content');
+        if(cont) cont.style.display='flex';
+      });
+      const hide=(ids)=>ids.forEach(id=>document.getElementById(id).style.display='none');
+      const show=(ids)=>ids.forEach(id=>document.getElementById(id).style.display='block');
+      if(document.getElementById('pdfFileName')) document.getElementById('pdfFileName').textContent='Seleccionar PDF';
+      if(document.getElementById('visit1FileName')) document.getElementById('visit1FileName').textContent='Seleccionar PDF';
+      if(document.getElementById('visit2FileName')) document.getElementById('visit2FileName').textContent='Seleccionar PDF';
+
+      // limpiar requisitos
+      ['recordTitle','recordType','recordGroup','recordAdvisor','recordDate','recordDescription','linkedDoc',
+       'siteCompanyName','siteDepartment','siteContactName','siteProfessor',
+       'bitSite','bitProfessor','studentCode','studentName','studentId','studentProgram','studentSemester','studentEmail','studentPhone',
+       'logObjectives','logActivities','logHours','logComments','evalProactividad','evalResponsabilidad','evalTecnicas','evalEquipo','evalResolucion','evalFinal',
+       'stuFirstName','stuLastName','stuDocument','stuCode','stuGroup','stuProgram','stuSemester','stuEmail','stuPhone'
+      ].forEach(id=>{const el=document.getElementById(id); if(el) el.required=false;});
+
+      if(currentSection==='acta'){
+        document.getElementById('modalTitle').textContent = (editState.section==='acta' && editState.id)?'Editar Registro de Acta':'Nuevo Registro de Acta';
+        show(['formRowDocLink','formGroupType','formGroupGroup','formGroupAdvisor','formGroupDate','formGroupActaDetails','formRowFiles']);
+        hide(['formGroupTitle','formGroupDescription','formGroupGroupExtras','formGroupSiteDetails','formGroupBitacora','formGroupStudent']);
+        document.getElementById('linkedDoc').required=true;
+        document.getElementById('recordType').required=true;
+        document.getElementById('recordGroup').required=true;
+        document.getElementById('recordAdvisor').required=true;
+        document.getElementById('recordDate').required=true;
+        document.getElementById('recordType').value='Acta Estudiantes';
+        fillLinkedDocSelect(); fillGroupSelect(); populateAdvisorDropdown();
+
+        // Prefill si edita
+        if(editState.section==='acta' && editState.id){
+          const rec = (allData.acta||[]).find(a=>String(a.id)===String(editState.id));
+          if(rec){
+            document.getElementById('linkedDoc').value = rec.linkedDocId||'';
+            document.getElementById('recordType').value = rec.type||'Acta Estudiantes';
+            document.getElementById('recordGroup').value = rec.group||'';
+            document.getElementById('recordAdvisor').value = rec.advisorId||'';
+            document.getElementById('recordDate').value = rec.date||'';
+            document.getElementById('recordLogros').value = rec.logros||'';
+            document.getElementById('recordAcuerdos').value = rec.acuerdos||'';
+            document.getElementById('recordSintesis').value = rec.sintesis||'';
+            if(rec.pdfUrl) document.getElementById('pdfFileName').textContent='Archivo cargado';
+          }
+        }
+
+      }else if(currentSection==='documentos'){
+        document.getElementById('modalTitle').textContent = (editState.section==='documentos' && editState.id)?'Editar Documento':'Nuevo Documento';
+        show(['formGroupTitle','formGroupType','formGroupDate','formGroupDescription']);
+        hide(['formRowDocLink','formGroupGroup','formGroupAdvisor','formGroupActaDetails','formRowFiles','formGroupGroupExtras','formGroupSiteDetails','formGroupBitacora','formGroupStudent']);
+        document.getElementById('labelTitle').textContent='Título del documento';
+        document.getElementById('labelDescription').textContent='Propósito del documento';
+        document.getElementById('recordTitle').required=true; 
+        document.getElementById('recordType').required=true; 
+        document.getElementById('recordDate').required=true; 
+        document.getElementById('recordDescription').required=true;
+
+        if(editState.section==='documentos' && editState.id){
+          const d=(allData.documentos||[]).find(x=>String(x.id)===String(editState.id));
+          if(d){
+            document.getElementById('recordTitle').value=d.title||'';
+            document.getElementById('recordType').value=d.type||'';
+            document.getElementById('recordDate').value=d.date||'';
+            document.getElementById('recordDescription').value=d.purpose||'';
+          }
+        }
+
+      }else if(currentSection==='admin-grupos'){
+        document.getElementById('modalTitle').textContent = (editState.section==='admin-grupos' && editState.id)?'Editar Grupo / Cohorte':'Nuevo Grupo / Cohorte';
+        show(['formGroupTitle','formGroupDate','formGroupDescription','formGroupGroupExtras']);
+        hide(['formRowDocLink','formGroupType','formGroupGroup','formGroupAdvisor','formGroupActaDetails','formRowFiles','formGroupSiteDetails','formGroupBitacora','formGroupStudent']);
+        document.getElementById('labelTitle').textContent='Nombre de grupo / cohorte (ej. 2025-2)';
+        document.getElementById('labelDescription').textContent='Características, condiciones y elementos a tener en cuenta';
+        document.getElementById('recordTitle').required=true; 
+        document.getElementById('recordDate').required=true; 
+        populateGroupAdvisorDropdown();
+
+        if(editState.section==='admin-grupos' && editState.id){
+          const g=groups.find(x=>String(x.id)===String(editState.id));
+          if(g){
+            document.getElementById('recordTitle').value=g.name||'';
+            document.getElementById('recordDate').value=g.date||'';
+            document.getElementById('recordDescription').value=g.features||g.description||'';
+            document.getElementById('groupAdvisor').value=g.advisorId||'';
+          }
+        }
+
+      }else if(currentSection==='sites'){
+        document.getElementById('modalTitle').textContent = (editState.section==='sites' && editState.id)?'Editar Sitio de Práctica':'Crear Sitio de Práctica';
+        show(['formGroupSiteDetails']);
+        hide(['formRowDocLink','formGroupType','formGroupGroup','formGroupAdvisor','formGroupDate','formGroupActaDetails','formRowFiles','formGroupTitle','formGroupDescription','formGroupGroupExtras','formGroupBitacora','formGroupStudent']);
+        document.getElementById('siteCompanyName').required = true;
+        document.getElementById('siteContactName').required = true;
+        document.getElementById('siteProfessor').required = true;
+        populateSiteProfessorDropdown();
+
+        if(editState.section==='sites' && editState.id){
+          const s=(allData.sites||[]).find(x=>String(x.id)===String(editState.id));
+          if(s){
+            document.getElementById('siteCompanyName').value=s.companyName||'';
+            document.getElementById('siteDepartment').value=s.department||'';
+            document.getElementById('siteContactName').value=s.contactName||'';
+            document.getElementById('siteProfessor').value=s.professorId||'';
+          }
+        }
+
+      }else if(currentSection==='bitacoras'){
+        document.getElementById('modalTitle').textContent = (editState.section==='bitacoras' && editState.id)?'Editar Bitácora de Práctica':'Nueva Bitácora de Práctica';
+        show(['formGroupBitacora']);
+        hide(['formRowDocLink','formGroupType','formGroupGroup','formGroupAdvisor','formGroupDate','formGroupActaDetails','formRowFiles','formGroupTitle','formGroupDescription','formGroupGroupExtras','formGroupSiteDetails','formGroupStudent']);
+        ['bitSite','bitProfessor','studentCode','studentName','studentId','studentProgram','studentSemester','studentEmail','studentPhone','logObjectives','logActivities','logHours']
+          .forEach(id=>document.getElementById(id).required=true);
+        populateBitacoraDropdowns();
+
+        if(editState.section==='bitacoras' && editState.id){
+          const b=(allData.bitacoras||[]).find(x=>String(x.id)===String(editState.id));
+          if(b){
+            document.getElementById('bitSite').value=b.siteId||'';
+            document.getElementById('bitProfessor').value=b.professorId||'';
+            document.getElementById('studentCode').value=b.student.code||'';
+            document.getElementById('studentName').value=b.student.name||'';
+            document.getElementById('studentId').value=b.student.id||'';
+            document.getElementById('studentProgram').value=b.student.program||'';
+            document.getElementById('studentSemester').value=b.student.semester||'';
+            document.getElementById('studentEmail').value=b.student.email||'';
+            document.getElementById('studentPhone').value=b.student.phone||'';
+            document.getElementById('logObjectives').value=b.objectives||'';
+            document.getElementById('logActivities').value=b.activities||'';
+            document.getElementById('logHours').value=b.hours||0;
+            document.getElementById('logComments').value=b.comments||'';
+            document.getElementById('evalProactividad').value=b.eval?.proactividad??'';
+            document.getElementById('evalResponsabilidad').value=b.eval?.responsabilidad??'';
+            document.getElementById('evalTecnicas').value=b.eval?.tecnicas??'';
+            document.getElementById('evalEquipo').value=b.eval?.equipo??'';
+            document.getElementById('evalResolucion').value=b.eval?.resolucion??'';
+            document.getElementById('evalFinal').value=b.eval?.final??'';
+            if(b.visit1PdfUrl) document.getElementById('visit1FileName').textContent='Archivo cargado';
+            if(b.visit2PdfUrl) document.getElementById('visit2FileName').textContent='Archivo cargado';
+          }
+        }
+
+      }else if(currentSection==='estudiantes'){
+        document.getElementById('modalTitle').textContent = (editState.section==='estudiantes' && editState.id)?'Editar Estudiante':'Nuevo Estudiante';
+        show(['formGroupStudent']);
+        hide(['formRowDocLink','formGroupType','formGroupGroup','formGroupAdvisor','formGroupDate','formGroupActaDetails','formRowFiles','formGroupTitle','formGroupDescription','formGroupGroupExtras','formGroupSiteDetails','formGroupBitacora']);
+        ['stuFirstName','stuLastName','stuDocument','stuCode','stuGroup'].forEach(id=>document.getElementById(id).required=true);
+        populateStudentGroupDropdown();
+
+        if(editState.section==='estudiantes' && editState.id){
+          const s=(allData.estudiantes||[]).find(x=>String(x.id)===String(editState.id));
+          if(s){
+            document.getElementById('stuFirstName').value=s.firstName||'';
+            document.getElementById('stuLastName').value=s.lastName||'';
+            document.getElementById('stuDocument').value=s.document||'';
+            document.getElementById('stuCode').value=s.code||'';
+            document.getElementById('stuGroup').value=s.groupId||'';
+            syncStudentAdvisorFromGroup();
+            if(s.advisorName) document.getElementById('stuAdvisorName').value=s.advisorName;
+            document.getElementById('stuProgram').value=s.program||'';
+            document.getElementById('stuSemester').value=s.semester||'';
+            document.getElementById('stuEmail').value=s.email||'';
+            document.getElementById('stuPhone').value=s.phone||'';
+            document.getElementById('stuAddress').value=s.address||'';
+            document.getElementById('stuNotes').value=s.notes||'';
+            if(s.photo){
+              const img=document.getElementById('stuPhotoPreview');
+              img.src = s.photo; img.style.display='block';
+              const cont=img.closest('.file-upload-box').querySelector('.upload-content');
+              if(cont) cont.style.display='none';
+            }
+          }
+        }
+      }
       document.getElementById('dataModal').style.display='flex';
     }
 
     function hideModal(){
       editState={section:null,id:null};
+      editState={section:null,id:null};
       document.getElementById('dataModal').style.display='none';
     }
+
+    function handleFormSubmit(e){
+      e.preventDefault();
+      try{
+        // ----- ACTAS -----
+        if(currentSection==='acta'){
+          const linkedDocId=Number(document.getElementById('linkedDoc').value);
+          const advisorId=document.getElementById('recordAdvisor').value;
+          const groupName=document.getElementById('recordGroup').value;
+          const dateVal=document.getElementById('recordDate').value;
+          if(!linkedDocId||!advisorId||!groupName||!dateVal){showNotification('Debe seleccionar documento base, docente, cohorte y fecha.','error');return;}
+          const advisor=professors.find(p=>p.id===advisorId);
+          const payload={
+            linkedDocId,
+            type:document.getElementById('recordType').value||'Acta Estudiantes',
+            group:groupName,advisorId,advisorName:advisor?advisor.name:'N/A',date:dateVal,
+            logros:document.getElementById('recordLogros').value,
+            acuerdos:document.getElementById('recordAcuerdos').value,
+            sintesis:document.getElementById('recordSintesis').value
+          };
+          const pdf = document.getElementById('actaPdf').files[0];
+          const ph1 = document.getElementById('photo1').files[0];
+          const ph2 = document.getElementById('photo2').files[0];
+
+          if(editState.section==='acta' && editState.id){
+            const idx=(allData.acta||[]).findIndex(a=>String(a.id)===String(editState.id));
+            if(idx>-1){
+              const prev=allData.acta[idx];
+              allData.acta[idx]={...prev, ...payload,
+                pdfUrl: pdf?URL.createObjectURL(pdf):prev.pdfUrl,
+                photo1: ph1?URL.createObjectURL(ph1):prev.photo1,
+                photo2: ph2?URL.createObjectURL(ph2):prev.photo2
+              };
+            }
+          } else {
+            allData.acta = allData.acta||[];
+            allData.acta.push({
+              id:Date.now(), ...payload,
+              pdfUrl: pdf?URL.createObjectURL(pdf):null,
+              photo1: ph1?URL.createObjectURL(ph1):null,
+              photo2: ph2?URL.createObjectURL(ph2):null
+            });
+          }
+
+        // ----- DOCUMENTOS -----
+        } else if(currentSection==='documentos'){
+          const title=document.getElementById('recordTitle').value;
+          const type=document.getElementById('recordType').value;
+          const date=document.getElementById('recordDate').value;
+          const purpose=document.getElementById('recordDescription').value;
+          if(!title||!type||!date||!purpose){showNotification('Título, tipo, fecha y propósito son obligatorios.','error');return;}
+
+          if(editState.section==='documentos' && editState.id){
+            const idx=(allData.documentos||[]).findIndex(d=>String(d.id)===String(editState.id));
+            if(idx>-1) allData.documentos[idx]={...allData.documentos[idx], title,type,date,purpose};
+          } else {
+            allData.documentos.push({id:Date.now()%100000,title,type,date,purpose});
+          }
+
+        // ----- GRUPOS -----
+        } else if(currentSection==='admin-grupos'){
+          const name=document.getElementById('recordTitle').value;
+          const date=document.getElementById('recordDate').value;
+          const features=document.getElementById('recordDescription').value;
+          const advisorId=document.getElementById('groupAdvisor').value||null;
+          if(!name||!date){showNotification('Nombre de cohorte y fecha son obligatorios.','error');return;}
+
+          if(editState.section==='admin-grupos' && editState.id){
+            const idx=groups.findIndex(g=>String(g.id)===String(editState.id));
+            if(idx>-1) groups[idx]={...groups[idx], name,date,features,description:features,advisorId};
+          } else {
+            groups.push({id:`G-${Date.now()%100000}`,name,date,description:features,features,advisorId});
+          }
+
+        // ----- SITIOS -----
+        } else if(currentSection==='sites'){
+          const companyName = document.getElementById('siteCompanyName').value.trim();
+          const department  = document.getElementById('siteDepartment').value.trim();
+          const contactName = document.getElementById('siteContactName').value.trim();
+          const professorId = document.getElementById('siteProfessor').value;
+          if(!companyName || !contactName || !professorId){
+            showNotification('Empresa, contacto y profesor son obligatorios.','error'); return;
+          }
+
+          if(editState.section==='sites' && editState.id){
+            const idx=(allData.sites||[]).findIndex(s=>String(s.id)===String(editState.id));
+            if(idx>-1) allData.sites[idx]={...allData.sites[idx], companyName, department, contactName, professorId};
+          } else {
+            if(!allData.sites) allData.sites = [];
+            allData.sites.push({ id: `S-${Date.now()%100000}`, companyName, department, contactName, professorId });
+          }
+
+        // ----- BITÁCORAS -----
+        } else if(currentSection==='bitacoras'){
+          const siteId = document.getElementById('bitSite').value;
+          const professorId = document.getElementById('bitProfessor').value;
+          const student = {
+            code: document.getElementById('studentCode').value.trim(),
+            name: document.getElementById('studentName').value.trim(),
+            id: document.getElementById('studentId').value.trim(),
+            program: document.getElementById('studentProgram').value.trim(),
+            semester: document.getElementById('studentSemester').value.trim(),
+            email: document.getElementById('studentEmail').value.trim(),
+            phone: document.getElementById('studentPhone').value.trim()
+          };
+          const objectives = document.getElementById('logObjectives').value;
+          const activities = document.getElementById('logActivities').value;
+          const hours = Number(document.getElementById('logHours').value||0);
+          const comments = document.getElementById('logComments').value;
+          const evals = {
+            proactividad: numOrNull('evalProactividad'),
+            responsabilidad: numOrNull('evalResponsabilidad'),
+            tecnicas: numOrNull('evalTecnicas'),
+            equipo: numOrNull('evalEquipo'),
+            resolucion: numOrNull('evalResolucion'),
+            final: clamp5(numOrNull('evalFinal'))
+          };
+          if(!siteId || !professorId || !student.code || !student.name || !student.id || !student.program || !student.semester || !student.email || !student.phone){
+            showNotification('Completa sitio, profesor y los datos del estudiante.','error'); return;
+          }
+          const v1 = document.getElementById('visit1Pdf').files[0];
+          const v2 = document.getElementById('visit2Pdf').files[0];
+
+          if(editState.section==='bitacoras' && editState.id){
+            const idx=(allData.bitacoras||[]).findIndex(b=>String(b.id)===String(editState.id));
+            if(idx>-1){
+              const prev=allData.bitacoras[idx];
+              allData.bitacoras[idx]={...prev, siteId, professorId, student,
+                objectives, activities, hours, comments, eval: evals,
+                visit1PdfUrl: v1?URL.createObjectURL(v1):prev.visit1PdfUrl,
+                visit2PdfUrl: v2?URL.createObjectURL(v2):prev.visit2PdfUrl
+              };
+            }
+          } else {
+            allData.bitacoras = allData.bitacoras||[];
+            allData.bitacoras.push({
+              id:`B-${Date.now()%100000}`,
+              siteId, professorId, student,
+              objectives, activities, hours, comments,
+              eval: evals,
+              visit1PdfUrl: v1?URL.createObjectURL(v1):null,
+              visit2PdfUrl: v2?URL.createObjectURL(v2):null,
+              createdAt: new Date().toISOString()
+            });
+          }
+
+        // ----- ESTUDIANTES -----
+        } else if(currentSection==='estudiantes'){
+          const firstName = document.getElementById('stuFirstName').value.trim();
+          const lastName  = document.getElementById('stuLastName').value.trim();
+          const documentId= document.getElementById('stuDocument').value.trim();
+          const code      = document.getElementById('stuCode').value.trim();
+          const groupId   = document.getElementById('stuGroup').value;
+          if(!firstName || !lastName || !documentId || !code || !groupId){
+            showNotification('Nombre, apellido, documento, código y grupo son obligatorios.','error'); return;
+          }
+          const grp = groups.find(g=>g.id===groupId);
+          const advisorId = grp?grp.advisorId:null;
+          const advisorName = advisorId ? (professors.find(p=>p.id===advisorId)?.name||''):'';
+          const studentObj = {
+            firstName,lastName,document:documentId,code,
+            groupId, program: document.getElementById('stuProgram').value.trim(),
+            semester: document.getElementById('stuSemester').value.trim(),
+            email: document.getElementById('stuEmail').value.trim(),
+            phone: document.getElementById('stuPhone').value.trim(),
+            address: document.getElementById('stuAddress').value.trim(),
+            notes: document.getElementById('stuNotes').value.trim(),
+            advisorId, advisorName
+          };
+          const photoFile = document.getElementById('stuPhoto').files[0];
+
+          if(editState.section==='estudiantes' && editState.id){
+            const idx=(allData.estudiantes||[]).findIndex(s=>String(s.id)===String(editState.id));
+            if(idx>-1){
+              const prev=allData.estudiantes[idx];
+              const finalize = (photoUrl)=>{
+                allData.estudiantes[idx]={...prev, ...studentObj, photo: (photoUrl!==undefined)?photoUrl:prev.photo };
+                hideModal(); loadTableData(); showNotification('Estudiante actualizado.','success');
+              };
+              if(photoFile){ const r=new FileReader(); r.onload=e=>finalize(e.target.result); r.readAsDataURL(photoFile); } else { finalize(undefined); }
+              return;
+            }
+          } else {
+            const base = { id:`E-${Date.now()%100000}`, photo:null, ...studentObj };
+            const finalize = (photoUrl)=>{ base.photo=photoUrl||null; allData.estudiantes.push(base); hideModal(); loadTableData(); showNotification('Estudiante creado.','success'); };
+            if(photoFile){ const r=new FileReader(); r.onload=e=>finalize(e.target.result); r.readAsDataURL(photoFile); } else { finalize(null); }
+            return;
+          }
+        }
+
+        hideModal(); loadTableData(); showNotification('Registro guardado exitosamente','success');
+      }catch(err){console.error(err); showNotification('Ocurrió un error al guardar. Revisa los campos.','error');}
+    }
+
+    // Utilidades
+    function numOrNull(id){ const v=document.getElementById(id).value; return v===''?null:Number(v) }
+    function clamp5(v){ if(v==null||isNaN(v)) return null; return Math.max(1, Math.min(5, v)); }
+
+    function autoComputeFinalGrade(){
+      const ids=['evalProactividad','evalResponsabilidad','evalTecnicas','evalEquipo','evalResolucion'];
+      const nums = ids.map(id=>Number(document.getElementById(id).value)).filter(n=>!isNaN(n));
+      if(nums.length){
+        let avg = (nums.reduce((a,b)=>a+b,0)/nums.length);
+        avg = Math.max(1, Math.min(5, avg));
+        document.getElementById('evalFinal').value = avg.toFixed(1);
+      }
+    }
+
+    function fillLinkedDocSelect(){
+      const sel=document.getElementById('linkedDoc');
+      sel.innerHTML='<option value="">-- Seleccionar Documento --</option>'+ allData.documentos.map(d=>`<option value="${d.id}">${d.title} — ${d.type} (${new Date(d.date).toLocaleDateString('es-ES')})</option>`).join('');
+    }
+    function fillGroupSelect(){
+      const sel=document.getElementById('recordGroup');
+      sel.innerHTML='<option value="">-- Seleccionar Cohorte --</option>'+ groups.map(g=>`<option value="${g.name}">${g.name}</option>`).join('');
+    }
+    function populateStudentGroupDropdown(){
+      const sel=document.getElementById('stuGroup');
+      sel.innerHTML = '<option value="">-- Seleccionar Cohorte --</option>'+ groups.map(g=>`<option value="${g.id}">${g.name}</option>`).join('');
+      syncStudentAdvisorFromGroup();
+    }
+    function populateAdvisorDropdown(){
+      const sel=document.getElementById('recordAdvisor');
+      sel.innerHTML='<option value="">-- Seleccionar Docente --</option>'+ professors.map(p=>`<option value="${p.id}">${p.name}</option>`).join('');
+    }
+    function populateGroupAdvisorDropdown(){
+      const sel=document.getElementById('groupAdvisor');
+      sel.innerHTML='<option value="">-- Seleccionar Asesor --</option>'+ professors.map(p=>`<option value="${p.id}">${p.name}</option>`).join('');
+    }
+    function populateSiteProfessorDropdown(){
+      const sel=document.getElementById('siteProfessor');
+      sel.innerHTML = '<option value="">-- Seleccionar Profesor --</option>' + professors.map(p=>`<option value="${p.id}">${p.name}</option>`).join('');
+    }
+    function populateBitacoraDropdowns(){
+      const siteSel=document.getElementById('bitSite');
+      const profSel=document.getElementById('bitProfessor');
+      siteSel.innerHTML = '<option value="">-- Seleccionar Sitio --</option>' + (allData.sites||[]).map(s=>`<option value="${s.id}">${s.companyName}</option>`).join('');
+      profSel.innerHTML = '<option value="">-- Seleccionar Profesor --</option>' + professors.map(p=>`<option value="${p.id}">${p.name}</option>`).join('');
+    }
+    function syncStudentAdvisorFromGroup(){
+      const groupId = document.getElementById('stuGroup').value;
+      const grp = groups.find(g=>g.id===groupId);
+      const advisorId = grp?grp.advisorId:'';
+      const adv = professors.find(p=>p.id===advisorId);
+      document.getElementById('stuAdvisorId').value = advisorId || '';
+      document.getElementById('stuAdvisorName').value = adv?adv.name:'';
+    }
+
+    function handleLinkedDocChange(){
+      const doc=allData.documentos.find(d=>d.id==document.getElementById('linkedDoc').value);
+      if(doc) document.getElementById('recordDate').value=doc.date;
+    }
+
+    // Buscador de estudiante por código dentro de Bitácora
+    function lookupStudentByCode(){
+      const code = (document.getElementById('bitSearchCode').value||'').trim();
+      if(!code){ showNotification('Escribe un código para buscar.','error'); return; }
+      const s = (allData.estudiantes||[]).find(e=>String(e.code).toLowerCase()===code.toLowerCase());
+      if(!s){ showNotification('Estudiante no encontrado.','error'); return; }
+      document.getElementById('studentCode').value = s.code||'';
+      document.getElementById('studentName').value = `${s.firstName||''} ${s.lastName||''}`.trim();
+      document.getElementById('studentId').value = s.document||'';
+      document.getElementById('studentProgram').value = s.program||'';
+      document.getElementById('studentSemester').value = s.semester||'';
+      document.getElementById('studentEmail').value = s.email||'';
+      document.getElementById('studentPhone').value = s.phone||'';
+      showNotification('Datos del estudiante cargados.','success');
+    }
+
+    function viewRecord(id){
+      if(currentSection!=='acta')return;
+      const rec=allData.acta.find(a=>a.id===id);
+      if(!rec){showNotification('Registro no encontrado','error');return;}
+      const baseDoc=allData.documentos.find(d=>d.id===rec.linkedDocId);
+      document.getElementById('previewTitle').textContent=`Vista Previa del Acta — Cohorte ${rec.group}`;
+      document.getElementById('previewPdfFrame').src=rec.pdfUrl||'';
+      document.getElementById('previewLogros').textContent=rec.logros||'—';
+      document.getElementById('previewAcuerdos').textContent=rec.acuerdos||'—';
+      document.getElementById('previewSintesis').textContent=rec.sintesis||'—';
+      const details=`<p><strong>Tipo:</strong> ${rec.type}</p>
+        <p><strong>Cohorte:</strong> ${rec.group}</p>
+        <p><strong>Docente:</strong> ${rec.advisorName}</p>
+        <p><strong>Fecha:</strong> ${new Date(rec.date).toLocaleDateString('es-ES')}</p>
+        ${baseDoc?`<p><strong>Propósito (del documento base):</strong><br>${baseDoc.purpose||'—'}</p>`:''}`;
+      document.getElementById('previewGeneralDetails').innerHTML=details;
+      const photos=[];
+      if(rec.photo1) photos.push(`<img src='${rec.photo1}' style='width:100%;border-radius:8px;margin:.25rem 0'>`);
+      if(rec.photo2) photos.push(`<img src='${rec.photo2}' style='width:100%;border-radius:8px;margin:.25rem 0'>`);
+      document.getElementById('previewPhotos').innerHTML=photos.join('');
+      document.getElementById('previewModal').style.display='flex';
+    }
+    function hidePreviewModal(){document.getElementById('previewModal').style.display='none'}
+
+    function editProfessor(id){
+      editingProfessorId = id || null;
+      const form=document.getElementById('profForm'); form.reset();
+      const title=document.getElementById('profModalTitle');
+      if(editingProfessorId){
+        title.textContent='Editar Profesor';
+        const p=professors.find(x=>x.id===editingProfessorId);
+        if(p){
+          document.getElementById('profName').value=p.name;
+          document.getElementById('profEmail').value=p.email;
+          document.getElementById('profSpecialty').value=p.specialty||'';
+          document.getElementById('profCv').value=p.cv||'';
+          document.getElementById('profProfile').value=p.profile||'';
+          document.getElementById('profRole').value=p.role||'profesor';
+        }
+      } else {
+        title.textContent='Registrar Profesor';
+      }
+      document.getElementById('profModal').style.display='flex';
 
     function handleFormSubmit(e){
       e.preventDefault();
@@ -1470,6 +2544,64 @@
       const el = document.getElementById(id);
       if(el) el.textContent=f?f.name:'Seleccionar PDF';
     }
+    function showProfModal(){ editProfessor(null); }
+    function hideProfModal(){ editingProfessorId=null; document.getElementById('profModal').style.display='none' }
+
+    function saveProfessor(e){
+      e.preventDefault();
+      const name=document.getElementById('profName').value;
+      const email=document.getElementById('profEmail').value;
+      const specialty=document.getElementById('profSpecialty').value;
+      const cv=document.getElementById('profCv').value;
+      const profile=document.getElementById('profProfile').value;
+      const role=document.getElementById('profRole').value;
+      const photoFile=document.getElementById('profPhoto').files[0];
+      if(!name||!email){showNotification('Nombre y email son obligatorios','error');return;}
+      const finalize=(photoUrl)=>{
+        if(editingProfessorId){
+          const idx=professors.findIndex(p=>p.id===editingProfessorId);
+          if(idx>-1){
+            professors[idx]={...professors[idx],name,email,specialty,cv,profile,role};
+            if(photoUrl!==undefined) professors[idx].photo=photoUrl;
+          }
+          showNotification('Profesor actualizado.','success');
+        } else {
+          professors.push({id:`P-${Date.now()}`,name,email,specialty,cv,profile,role,photo:photoUrl||null});
+          showNotification('Profesor guardado.','success');
+        }
+        hideProfModal(); loadTableData();
+      };
+      if(photoFile){
+        const r=new FileReader();
+        r.onload=e=>finalize(e.target.result);
+        r.readAsDataURL(photoFile);
+      } else { finalize(undefined); }
+    }
+
+    function deleteRecord(id){
+      if(!confirm('¿Eliminar este registro?')) return;
+      if(currentSection==='acta') allData.acta=allData.acta.filter(a=>a.id!==id);
+      else if(currentSection==='documentos') allData.documentos=allData.documentos.filter(d=>d.id!==id);
+      else if(currentSection==='admin-grupos') groups=groups.filter(g=>g.id!==id);
+      else if(currentSection==='roles-permisos') professors=professors.filter(p=>p.id!==id);
+      else if(currentSection==='sites') allData.sites=(allData.sites||[]).filter(s=>String(s.id)!==String(id));
+      else if(currentSection==='bitacoras') allData.bitacoras=(allData.bitacoras||[]).filter(b=>String(b.id)!==String(id));
+      else if(currentSection==='estudiantes') allData.estudiantes=(allData.estudiantes||[]).filter(e=>String(e.id)!==String(id));
+      loadTableData(); showNotification('Registro eliminado','success');
+    }
+
+    function previewImage(e,id){
+      const f=e.target.files[0]; if(!f) return;
+      const r=new FileReader(); const prev=document.getElementById(id);
+      const cont=prev.closest('.file-upload-box').querySelector('.upload-content');
+      r.onload=ev=>{prev.src=ev.target.result; prev.style.display='block'; if(cont) cont.style.display='none';};
+      r.readAsDataURL(f);
+    }
+    function previewFileName(e,id){
+      const f=e.target.files[0];
+      const el = document.getElementById(id);
+      if(el) el.textContent=f?f.name:'Seleccionar PDF';
+    }
     function showNotification(msg,type='info'){
       const n=document.createElement('div');
       n.textContent=msg;
@@ -1477,10 +2609,88 @@
       n.style.padding='10px 14px'; n.style.borderRadius='10px';
       n.style.color='#fff';
       n.style.background=type==='success'?'#38a169':(type==='error'?'#e53e3e':'#4a5568');
+      n.style.position='fixed'; n.style.right='16px'; n.style.bottom='16px';
+      n.style.padding='10px 14px'; n.style.borderRadius='10px';
+      n.style.color='#fff';
+      n.style.background=type==='success'?'#38a169':(type==='error'?'#e53e3e':'#4a5568');
       n.style.boxShadow='0 10px 20px rgba(0,0,0,.15)';
       document.body.appendChild(n);
       setTimeout(()=>n.remove(),2200);
+      setTimeout(()=>n.remove(),2200);
     }
+
+    // ---------- Exportar CSV compatible con Excel ----------
+    function exportCurrentSectionToExcel(){
+      const section = currentSection || 'datos';
+      let headers=[], rows=[];
+      if(section==='acta'){
+        headers=['ID','Cohorte','Docente','Fecha','Logros','Acuerdos','Síntesis','PDF','Foto1','Foto2'];
+        rows = (allData.acta||[]).map(a=>[
+          a.id, a.group, a.advisorName, a.date, clean(a.logros), clean(a.acuerdos), clean(a.sintesis),
+          a.pdfUrl?'Sí':'No', a.photo1?'Sí':'No', a.photo2?'Sí':'No'
+        ]);
+      }else if(section==='documentos'){
+        headers=['ID','Título','Tipo','Fecha','Propósito'];
+        rows=(allData.documentos||[]).map(d=>[d.id,d.title,d.type,d.date,clean(d.purpose)]);
+      }else if(section==='admin-grupos'){
+        headers=['ID','Cohorte','Asesor','Fecha','Características'];
+        rows=(groups||[]).map(g=>{
+          const adv=professors.find(p=>p.id===g.advisorId);
+          return [g.id,g.name,adv?adv.name:'',g.date,clean(g.features||g.description||'')];
+        });
+      }else if(section==='roles-permisos'){
+        headers=['ID','Nombre','Email','Rol','Especialidad','Perfil'];
+        rows=(professors||[]).map(p=>[p.id,p.name,p.email,p.role||'',p.specialty||'',clean(p.profile||'')]);
+      }else if(section==='sites'){
+        headers=['ID','Empresa','Departamento','Contacto','Profesor'];
+        rows=(allData.sites||[]).map(s=>{
+          const pr=professors.find(p=>p.id===s.professorId);
+          return [s.id,s.companyName,s.department||'',s.contactName||'',pr?pr.name:''];
+        });
+      }else if(section==='bitacoras'){
+        headers=['ID','Código','Estudiante','Identificación','Programa','Semestre','Email','Teléfono',
+                 'Sitio','Profesor','Objetivos','Actividades','Horas','Comentarios',
+                 'Eval Proactividad','Eval Responsabilidad','Eval Técnicas','Eval Equipo','Eval Resolución','Calificación Final',
+                 'Acta 1ª','Acta Final','Creado'];
+        rows=(allData.bitacoras||[]).map(b=>{
+          const site=(allData.sites||[]).find(s=>s.id===b.siteId);
+          const pr=(professors||[]).find(p=>p.id===b.professorId);
+          return [b.id,b.student.code,b.student.name,b.student.id,b.student.program,b.student.semester,b.student.email,b.student.phone,
+                  site?site.companyName:'',pr?pr.name:'',
+                  clean(b.objectives||''),clean(b.activities||''),b.hours||0,clean(b.comments||''),
+                  b.eval?.proactividad??'',b.eval?.responsabilidad??'',b.eval?.tecnicas??'',b.eval?.equipo??'',b.eval?.resolucion??'',b.eval?.final??'',
+                  b.visit1PdfUrl?'Sí':'No',b.visit2PdfUrl?'Sí':'No',b.createdAt?new Date(b.createdAt).toLocaleString():''];
+        });
+      }else if(section==='estudiantes'){
+        headers=['ID','Código','Nombre','Apellido','Documento','Programa','Semestre','Grupo','Asesor','Email','Teléfono','Dirección','Notas'];
+        rows=(allData.estudiantes||[]).map(s=>{
+          const grp=groups.find(g=>g.id===s.groupId);
+          const adv=professors.find(p=>p.id===s.advisorId);
+          return [s.id,s.code,s.firstName,s.lastName,s.document,s.program||'',s.semester||'',grp?grp.name:'',adv?adv.name:'',s.email||'',s.phone||'',s.address||'',clean(s.notes||'')];
+        });
+      } else {
+        showNotification('Nada para exportar en esta sección.','error'); return;
+      }
+      if(!rows.length){ showNotification('No hay datos para exportar.','error'); return; }
+      const csv = toCSV([headers, ...rows]);
+      const blob = new Blob(["\uFEFF"+csv], {type:"text/csv;charset=utf-8;"});
+      const link = document.createElement("a");
+      const stamp = new Date().toISOString().slice(0,19).replace(/[:T]/g,'-');
+      link.href = URL.createObjectURL(blob);
+      link.download = `export_${section}_${stamp}.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+    function toCSV(rows){
+      return rows.map(r=>r.map(v=>{
+        const s = (v===null||v===undefined)?'':String(v);
+        const needsQuote = /[",\n;]/.test(s);
+        const escaped = s.replace(/"/g,'""');
+        return needsQuote?`"${escaped}"`:escaped;
+      }).join(',')).join('\n');
+    }
+    function clean(s){ return String(s||'').replace(/\s+/g,' ').trim(); }
 
     // ---------- Exportar CSV compatible con Excel ----------
     function exportCurrentSectionToExcel(){
@@ -1557,3 +2767,4 @@
   </script>
 </body>
 </html>
+
