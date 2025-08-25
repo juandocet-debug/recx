@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recreo - Sistema de Gestión Académica</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh}
+    .login-container{display:flex;justify-content:center;align-items:center;min-height:100vh}
+    .login-card{background:#fff;padding:3rem;border-radius:20px;box-shadow:0 20px 40px rgba(0,0,0,.1);width:100%;max-width:400px;text-align:center}
+    .login-logo{font-size:3rem;color:#667eea;margin-bottom:1rem}
+    .login-title{font-size:2rem;font-weight:700;color:#333;margin-bottom:.5rem}
+    .login-subtitle{color:#666;margin-bottom:2rem}
+    .form-group{margin-bottom:1.5rem;text-align:left}
+    .form-group label{display:block;margin-bottom:.5rem;font-weight:600;color:#333}
+    .form-control{width:100%;padding:12px 16px;border:2px solid #e1e5e9;border-radius:10px;font-size:16px}
+    .btn-login{width:100%;padding:12px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer}
+    .app-container{display:none;min-height:100vh;background:#f8fafc}
+    .sidebar{position:fixed;top:0;left:0;height:100vh;width:280px;background:linear-gradient(180deg,#1a202c 0%,#2d3748 100%);z-index:1000;overflow-y:auto;box-shadow:5px 0 20px rgba(0,0,0,.1)}
+    .sidebar-header{padding:1.5rem;text-align:center;border-bottom:1px solid #4a5568}
+    .sidebar-logo{font-size:2rem;color:#667eea;margin-bottom:.5rem}
+    .sidebar-title{color:#fff;font-size:1.25rem;font-weight:700}
+    .sidebar-nav{padding:1rem 0}
+    .nav-item{display:flex;align-items:center;padding:1rem 1.5rem;color:#cbd5e0;text-decoration:none;border-left:3px solid transparent; transition: background-color 0.3s, color 0.3s, border-left-color 0.3s;}
+    .nav-item.active,.nav-item:hover{background:rgba(102,126,234,.15);color:#fff;border-left-color:#667eea}
+    .nav-item i{font-size:1.25rem;margin-right:1rem;width:20px}
+    .nav-arrow{margin-left:auto;transition:transform .3s ease}
+    .nav-item.expanded .nav-arrow{transform:rotate(180deg)}
+    .submenu{max-height:0;overflow:hidden;transition:max-height .3s ease-in-out;background:rgba(0,0,0,.2)}
+    .submenu.active{max-height:300px}
+    .submenu .nav-item{padding-left:3.5rem;font-size:.9rem}
+    .main-content{margin-left:280px;min-height:100vh; transition: margin-left 0.3s ease;}
+    .header{background:#fff;padding:1rem 2rem;box-shadow:0 2px 10px rgba(0,0,0,.1);display:flex;justify-content:space-between;align-items:center}
+    .header-title{font-size:1.5rem;font-weight:700;color:#2d3748}
+    .user-info{display:flex;gap:.75rem;align-items:center}
+    .user-avatar{width:40px;height:40px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:bold}
+    .content{padding:2rem}
+    .dashboard-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.25rem}
+    .dashboard-card{background:#fff;border-radius:16px;padding:1.5rem;box-shadow:0 10px 25px rgba(0,0,0,.08)}
+    .card-header{display:flex;align-items:center;margin-bottom:1rem}
+    .card-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-right:1rem;font-size:1.25rem;color:#fff}
+    .theme-docencia{background:linear-gradient(135deg,#48bb78 0%,#38a169 100%)}
+    .theme-practicas{background:linear-gradient(135deg,#4299e1 0%,#3182ce 100%)}
+    .theme-salidas{background:linear-gradient(135deg,#ed8936 0%,#dd6b20 100%)}
+    .theme-admin{background:linear-gradient(135deg,#38b2ac 0%,#319795 100%)}
+    .data-section{background:#fff;border-radius:16px;padding:1.5rem;box-shadow:0 10px 25px rgba(0,0,0,.08);display:none}
+    .section-header{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1rem}
+    .btn{padding:.6rem 1rem;border:none;border-radius:10px;font-weight:600;display:inline-flex;align-items:center;gap:.5rem;cursor:pointer}
+    .btn-primary{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff}
+    .btn-secondary{background:#e2e8f0;color:#4a5568}
+    .btn-danger{background:#e53e3e;color:#fff}
+    .logout-btn{ background:#f56565; color: white; padding: 0.5rem 0.8rem; border:none; border-radius:8px; cursor:pointer; transition: background-color 0.2s; }
+    .logout-btn:hover{ background: #c53030; }
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:.85rem;border-bottom:1px solid #e2e8f0;text-align:left}
+    th{background:#f7fafc}
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;justify-content:center;align-items:center;z-index:2000}
+    .modal-content{background:#fff;border-radius:16px;padding:1.25rem;width:92%;max-width:760px;max-height:90vh;overflow:auto}
+    .modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+    .form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-bottom:.75rem}
+    .file-upload-box{border:2px dashed #cbd5e0;border-radius:10px;padding:1rem;text-align:center;height:150px;display:flex;flex-direction:column;justify-content:center;align-items:center;background:#f8fafc;cursor:pointer}
+    .file-upload-box input{display:none}
+    .file-upload-box .upload-icon{font-size:2rem;color:#cbd5e0;margin-bottom:.5rem}
+    .file-upload-box .upload-text{font-weight:600;color:#4a5568;font-size:.9rem}
+    .file-upload-box .upload-preview{position:absolute;width:100%;height:100%;object-fit:cover;border-radius:8px}
+    .preview-grid{display:grid;grid-template-columns:2fr 1fr;gap:1rem}
+    .preview-pdf-container{width:100%;height:380px;border:1px solid #e2e8f0;border-radius:8px}
+    .pill{display:inline-block;padding:.2rem .5rem;border-radius:9999px;background:#edf2f7;color:#4a5568;font-size:.75rem;font-weight:600}
+    #jsErrorOverlay{position:fixed;left:12px;right:12px;bottom:12px;background:#111;color:#fff;padding:12px 14px;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.35);font-family:ui-monospace,Menlo,Consolas,monospace;max-height:45vh;overflow:auto;white-space:pre-wrap}
+  </style>
+</head>
+<body>
+  <div id="loginScreen" class="login-container">
+    <div class="login-card">
+      <div class="login-logo"><i class="fas fa-graduation-cap"></i></div>
+      <h1 class="login-title">Recreo</h1>
+      <p class="login-subtitle">Sistema de Gestión Académica</p>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="userRole">Tipo de Usuario</label>
+          <select id="userRole" class="form-control" required>
+            <option value="">Seleccionar rol...</option>
+            <option value="estudiante">Estudiante</option>
+            <option value="profesor">Profesor</option>
+            <option value="coordinador">Coordinador</option>
+            <option value="administrador">Administrador</option>
+          </select>
+        </div>
+        <div class="form-group"><label for="username">Usuario</label><input id="username" class="form-control" required></div>
+        <div class="form-group"><label for="password">Contraseña</label><input type="password" id="password" class="form-control" required></div>
+        <button class="btn-login" type="submit"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="appContainer" class="app-container">
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo"><i class="fas fa-graduation-cap"></i></div>
+        <div class="sidebar-title">Recreo</div>
+      </div>
+
+      <!-- SIDEBAR: Docencia, Prácticas, Usuarios -->
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" onclick="showSection('dashboard')">
+          <i class="fas fa-home"></i><span class="nav-text">Inicio</span>
+        </a>
+
+        <!-- Gestión de la Docencia -->
+        <a href="#" class="nav-item" onclick="toggleSubmenu(event)">
+          <i class="fas fa-chalkboard-teacher"></i>
+          <span class="nav-text">Gestión de la Docencia</span>
+          <i class="fas fa-chevron-down nav-arrow"></i>
+        </a>
+        <div class="submenu">
+          <a href="#" class="nav-item" onclick="showDataSection('acta')">
+            <i class="fas fa-file-signature"></i><span class="nav-text">Registro de Actas</span>
+          </a>
+        </div>
+
+        <!-- Prácticas -->
+        <a href="#" class="nav-item" onclick="toggleSubmenu(event)">
+          <i class="fas fa-briefcase"></i>
+          <span class="nav-text">Prácticas</span>
+          <i class="fas fa-chevron-down nav-arrow"></i>
+        </a>
+        <div class="submenu">
+          <a href="#" class="nav-item" onclick="showDataSection('sites')">
+            <i class="fas fa-building"></i><span class="nav-text">Administrar Sitio de Práctica</span>
+          </a>
+        </div>
+
+        <!-- Gestión de Usuarios -->
+        <a href="#" class="nav-item" onclick="toggleSubmenu(event)">
+          <i class="fas fa-user-cog"></i>
+          <span class="nav-text">Gestión de Usuarios</span>
+          <i class="fas fa-chevron-down nav-arrow"></i>
+        </a>
+        <div class="submenu">
+          <a href="#" class="nav-item" onclick="showDataSection('roles-permisos')">
+            <i class="fas fa-user-shield"></i><span class="nav-text">Profesores</span>
+          </a>
+        </div>
+
+        <!-- Accesos directos existentes -->
+        <a href="#" class="nav-item" onclick="showDataSection('documentos')">
+          <i class="fas fa-folder-plus"></i><span class="nav-text">Gestión de Documentos</span>
+        </a>
+        <a href="#" class="nav-item" onclick="showDataSection('admin-grupos')">
+          <i class="fas fa-users-cog"></i><span class="nav-text">Administración de Grupos</span>
+        </a>
+      </nav>
+    </div>
+
+    <div class="main-content">
+      <div class="header">
+        <h1 class="header-title" id="headerTitle">Dashboard</h1>
+        <div class="user-info">
+          <div class="user-avatar" id="userAvatar">A</div>
+          <span id="userDisplay">Usuario</span>
+          <button class="logout-btn" onclick="logout()" title="Cerrar Sesión">
+            <i class="fas fa-sign-out-alt"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="content">
+        <div id="dashboard">
+          <div class="dashboard-grid">
+            <div class="dashboard-card">
+              <div class="card-header"><div class="card-icon theme-docencia"><i class="fas fa-chalkboard-teacher"></i></div><div class="card-title">Gestión de Docencia</div></div>
+              <ul>
+                <li><a href="#" onclick="showDataSection('acta')">Registro de actas estudiantes</a></li>
+              </ul>
+            </div>
+            <div class="dashboard-card">
+              <div class="card-header"><div class="card-icon theme-practicas"><i class="fas fa-folder-plus"></i></div><div class="card-title">Documentos</div></div>
+              <ul>
+                <li><a href="#" onclick="showDataSection('documentos')">Gestión de Documentos</a></li>
+              </ul>
+            </div>
+            <div class="dashboard-card">
+              <div class="card-header"><div class="card-icon theme-salidas"><i class="fas fa-users-cog"></i></div><div class="card-title">Grupos</div></div>
+              <ul>
+                <li><a href="#" onclick="showDataSection('admin-grupos')">Administración de Grupos</a></li>
+              </ul>
+            </div>
+            <div class="dashboard-card">
+              <div class="card-header"><div class="card-icon theme-admin"><i class="fas fa-user-shield"></i></div><div class="card-title">Profesores</div></div>
+              <ul>
+                <li><a href="#" onclick="showDataSection('roles-permisos')">Gestión de Profesores</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div id="dataSection" class="data-section">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title" id="sectionTitle">Gestión de Datos</h2>
+              <button class="btn btn-secondary" onclick="showSection('dashboard')"><i class="fas fa-arrow-left"></i> Volver</button>
+            </div>
+            <div class="section-actions">
+              <button id="btnNew" class="btn btn-primary"><i class="fas fa-plus"></i> <span id="btnNewText">Nuevo Registro</span></button>
+            </div>
+          </div>
+          <table id="dataTable">
+            <thead id="tableHeader"></thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+          <div style="display:flex;justify-content:center;gap:1rem;margin-top:1rem">
+            <button class="btn btn-secondary" id="prevBtn" onclick="prevPage()"><i class="fas fa-chevron-left"></i> Anterior</button>
+            <span id="pageInfo">Página 1 de 1</span>
+            <button class="btn btn-secondary" id="nextBtn" onclick="nextPage()">Siguiente <i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de datos -->
+  <div id="dataModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">Nuevo Registro</h3>
+        <button class="btn btn-secondary" onclick="hideModal()"><i class="fas fa-times"></i></button>
+      </div>
+      <form id="dataForm">
+        <!-- Vincular documento base (para actas) -->
+        <div id="formRowDocLink" class="form-row" style="display:none">
+          <div class="form-group" style="grid-column:1/-1">
+            <label for="linkedDoc">Seleccionar Documento Base (autocompleta la fecha)</label>
+            <select id="linkedDoc" class="form-control"></select>
+          </div>
+        </div>
+
+        <!-- Campos generales / actas / documentos / grupos -->
+        <div class="form-row">
+          <div id="formGroupTitle" class="form-group">
+            <label id="labelTitle" for="recordTitle">Título</label>
+            <input id="recordTitle" class="form-control">
+          </div>
+          <div id="formGroupType" class="form-group">
+            <label for="recordType">Tipo de Documento</label>
+            <select id="recordType" class="form-control">
+              <option value="Acta Estudiantes">Acta Estudiantes</option>
+              <option value="Informe">Informe</option>
+              <option value="Memorando">Memorando</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+          <div id="formGroupGroup" class="form-group">
+            <label for="recordGroup">Grupo (Cohorte)</label>
+            <select id="recordGroup" class="form-control"></select>
+          </div>
+          <div id="formGroupAdvisor" class="form-group">
+            <label for="recordAdvisor">Docente Asignado</label>
+            <select id="recordAdvisor" class="form-control"></select>
+          </div>
+          <div id="formGroupDate" class="form-group">
+            <label for="recordDate">Fecha</label>
+            <input type="date" id="recordDate" class="form-control">
+          </div>
+        </div>
+
+        <!-- Detalles de acta -->
+        <div id="formGroupActaDetails" style="display:none">
+          <div class="form-group"><label for="recordLogros">Logros</label><textarea id="recordLogros" class="form-control" rows="2"></textarea></div>
+          <div class="form-group"><label for="recordAcuerdos">Acuerdos</label><textarea id="recordAcuerdos" class="form-control" rows="2"></textarea></div>
+          <div class="form-group"><label for="recordSintesis">Compromisos / Síntesis</label><textarea id="recordSintesis" class="form-control" rows="2"></textarea></div>
+        </div>
+
+        <!-- Descripción genérica -->
+        <div id="formGroupDescription" class="form-group" style="display:none">
+          <label id="labelDescription" for="recordDescription">Descripción</label>
+          <textarea id="recordDescription" class="form-control" rows="3"></textarea>
+        </div>
+
+        <!-- Archivos (acta + fotos) -->
+        <div id="formRowFiles" class="form-row" style="display:none">
+          <div class="form-group">
+            <label>Acta (PDF)</label>
+            <label class="file-upload-box" for="actaPdf">
+              <input type="file" id="actaPdf" accept="application/pdf" onchange="previewFileName(event,'pdfFileName')">
+              <div class="upload-content"><i class="fas fa-file-pdf upload-icon"></i><span class="upload-text" id="pdfFileName">Seleccionar PDF</span></div>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>Evidencia Fotográfica 1</label>
+            <label class="file-upload-box" for="photo1">
+              <input type="file" id="photo1" accept="image/*" onchange="previewImage(event,'photoPreview1')">
+              <img id="photoPreview1" class="upload-preview" style="display:none" alt="Vista previa 1">
+              <div class="upload-content"><i class="fas fa-camera upload-icon"></i><span class="upload-text">Seleccionar foto</span></div>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>Evidencia Fotográfica 2</label>
+            <label class="file-upload-box" for="photo2">
+              <input type="file" id="photo2" accept="image/*" onchange="previewImage(event,'photoPreview2')">
+              <img id="photoPreview2" class="upload-preview" style="display:none" alt="Vista previa 2">
+              <div class="upload-content"><i class="fas fa-camera upload-icon"></i><span class="upload-text">Seleccionar foto</span></div>
+            </label>
+          </div>
+        </div>
+
+        <!-- EXCLUSIVO Sitios de Práctica -->
+        <div id="formGroupSiteDetails" style="display:none">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="siteCompanyName">Nombre de la Empresa</label>
+              <input type="text" id="siteCompanyName" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="siteDepartment">Área / Departamento</label>
+              <input type="text" id="siteDepartment" class="form-control">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="siteContactName">Nombre del Contacto</label>
+              <input type="text" id="siteContactName" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="siteProfessor">Profesor Tutor</label>
+              <select id="siteProfessor" class="form-control"></select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Extras de grupo -->
+        <div id="formGroupGroupExtras" style="display:none">
+          <div class="form-group"><label for="groupFeatures">Características, condiciones y elementos del grupo</label><textarea id="groupFeatures" class="form-control" rows="3"></textarea></div>
+          <div class="form-group"><label for="groupAdvisor">Asesor de cohorte</label><select id="groupAdvisor" class="form-control"></select></div>
+        </div>
+
+        <div style="display:flex;justify-content:flex-end;gap:.5rem;margin-top:.5rem">
+          <button type="button" class="btn btn-secondary" onclick="hideModal()"><i class="fas fa-times"></i> Cancelar</button>
+          <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal de vista previa Acta -->
+  <div id="previewModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="previewTitle">Vista Previa del Acta</h3>
+        <button class="btn btn-secondary" onclick="hidePreviewModal()"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="preview-grid">
+        <div>
+          <h4>Acta PDF</h4>
+          <div class="preview-pdf-container"><iframe id="previewPdfFrame" style="width:100%;height:100%;border:none"></iframe></div>
+          <div style="margin-top:.75rem">
+            <h5>Logros</h5><p id="previewLogros" class="pill" style="display:block"></p>
+            <h5>Acuerdos</h5><p id="previewAcuerdos" class="pill" style="display:block"></p>
+            <h5>Compromisos / Síntesis</h5><p id="previewSintesis" class="pill" style="display:block"></p>
+          </div>
+        </div>
+        <div>
+          <h4>Detalles</h4>
+          <div id="previewGeneralDetails"></div>
+          <h4 style="margin-top:1rem">Evidencias</h4>
+          <div id="previewPhotos"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Profesores -->
+  <div id="profModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="profModalTitle">Registrar Profesor</h3>
+        <button class="btn btn-secondary" onclick="hideProfModal()"><i class="fas fa-times"></i></button>
+      </div>
+      <form id="profForm">
+        <div class="form-row">
+          <div class="form-group"><label>Nombre</label><input id="profName" class="form-control" required></div>
+          <div class="form-group"><label>Email</label><input id="profEmail" type="email" class="form-control" required></div>
+        </div>
+        <div class="form-group"><label>Foto</label><input id="profPhoto" type="file" accept="image/*" class="form-control"></div>
+        <div class="form-group"><label>Especialidad</label><input id="profSpecialty" class="form-control"></div>
+        <div class="form-group"><label>Datos del CV</label><textarea id="profCv" class="form-control" rows="3"></textarea></div>
+        <div class="form-group"><label>Perfil</label><textarea id="profProfile" class="form-control" rows="3"></textarea></div>
+        <div class="form-group"><label>Rol en el sistema</label>
+          <select id="profRole" class="form-control">
+            <option value="profesor">Profesor</option>
+            <option value="coordinador">Coordinador</option>
+            <option value="administrador">Administrador</option>
+          </select>
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:.5rem;margin-top:.5rem">
+          <button type="button" class="btn btn-secondary" onclick="hideProfModal()">Cancelar</button>
+          <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const showErr = (msg, src, line, col, err)=>{
+        const o = document.getElementById('jsErrorOverlay') || document.createElement('pre');
+        o.id='jsErrorOverlay';
+        o.textContent += `\n${msg}\n${src || ''}:${line||''}:${col||''}${err?"\n"+ (err.stack||''):''}\n`;
+        document.body.appendChild(o);
+        return false;
+      };
+      window.addEventListener('error', e=>showErr(e.message, e.filename, e.lineno, e.colno, e.error));
+      window.addEventListener('unhandledrejection', e=>showErr('Unhandled Promise Rejection', '', '', '', e.reason));
+    })();
+
+    let currentUser=null, currentSection='', currentPage=1, itemsPerPage=10;
+    let allData={}, groups=[], professors=[];
+
+    const users={
+      admin:{password:'admin123',role:'administrador',name:'Administrador'},
+      coord:{password:'coord123',role:'coordinador',name:'Coordinador'},
+      prof:{password:'prof123',role:'profesor',name:'Profesor'},
+      est:{password:'est123',role:'estudiante',name:'Estudiante'}
+    };
+
+    document.addEventListener('DOMContentLoaded',()=>{
+      try{
+        setupEventListeners();
+        initializeData();
+      }catch(err){console.error(err)}
+    });
+
+    function setupEventListeners(){
+      document.getElementById('loginForm').addEventListener('submit', handleLogin);
+      document.getElementById('dataForm').addEventListener('submit', handleFormSubmit);
+      document.getElementById('profForm').addEventListener('submit', saveProfessor);
+      document.getElementById('linkedDoc').addEventListener('change', handleLinkedDocChange);
+    }
+    
+    function toggleSubmenu(event) {
+      event.preventDefault();
+      const navItem = event.currentTarget;
+      const submenu = navItem.nextElementSibling;
+      document.querySelectorAll('.submenu.active').forEach(otherSubmenu => {
+        if (otherSubmenu !== submenu) {
+          otherSubmenu.classList.remove('active');
+          otherSubmenu.previousElementSibling.classList.remove('expanded');
+        }
+      });
+      navItem.classList.toggle('expanded');
+      submenu.classList.toggle('active');
+    }
+
+    function logout() {
+      currentUser = null;
+      document.getElementById('appContainer').style.display = 'none';
+      document.getElementById('loginScreen').style.display = 'flex';
+      document.getElementById('loginForm').reset();
+    }
+
+    function initializeData(){
+      allData['acta']=[];
+      allData['documentos']=[
+        {id:101,title:'Plan de Trabajo 2025-1',type:'Informe',date:'2025-02-10',purpose:'Definir objetivos y cronograma para la cohorte 2025-1.'},
+        {id:102,title:'Resultados Diagnóstico Inicial',type:'Memorando',date:'2025-03-01',purpose:'Socializar los resultados de la evaluación diagnóstica inicial.'}
+      ];
+      // Sitios de práctica
+      allData['sites'] = [
+        // Ejemplos (puedes borrar):
+        // { id:'S-001', companyName:'TecnoCorp', department:'Desarrollo', contactName:'Laura Méndez', professorId:'P-002' }
+      ];
+
+      professors=[
+        {id:'P-001',name:'Dra. Ana Ruiz',email:'ana@uni.edu',photo:null,specialty:'Educación/TIC',cv:'PhD en Pedagogía.',profile:'Investigadora senior.',role:'profesor'},
+        {id:'P-002',name:'Ing. Carlos Pérez',email:'carlos@uni.edu',photo:null,specialty:'.NET/Agile',cv:'MSc. en Ing. de Software.',profile:'Líder innovación.',role:'coordinador'}
+      ];
+      groups=[
+        {id:'G-001',name:'2025-1',date:'2025-02-01',description:'Cohorte 2025-1',features:'Investigación aplicada',advisorId:'P-001'},
+        {id:'G-002',name:'2025-2',date:'2025-08-01',description:'Cohorte 2025-2',features:'Plan piloto',advisorId:'P-002'}
+      ];
+    }
+
+    function handleLogin(e){
+      e.preventDefault();
+      const u=document.getElementById('username').value;
+      const p=document.getElementById('password').value;
+      const r=document.getElementById('userRole').value;
+      if(users[u] && users[u].password===p && users[u].role===r){
+        currentUser={username:u,role:r,name:users[u].name};
+        document.getElementById('loginScreen').style.display='none';
+        document.getElementById('appContainer').style.display='block';
+        document.getElementById('userDisplay').textContent=currentUser.name;
+        document.getElementById('userAvatar').textContent=currentUser.name.charAt(0);
+        showSection('dashboard');
+      }else alert('Credenciales inválidas.');
+    }
+
+    function showSection(section){
+      document.getElementById('dashboard').style.display = section==='dashboard'?'block':'none';
+      document.getElementById('dataSection').style.display = section==='dashboard'?'none':'block';
+      document.getElementById('headerTitle').textContent = section==='dashboard'?'Dashboard':document.getElementById('sectionTitle').textContent;
+    }
+
+    function showDataSection(sectionType){
+      currentSection=sectionType; currentPage=1;
+      document.querySelectorAll('.sidebar-nav .nav-item').forEach(el => el.classList.remove('active'));
+      const activeLink = Array.from(document.querySelectorAll('.nav-item')).find(el => el.onclick && el.onclick.toString().includes(`'${sectionType}'`));
+      if (activeLink) activeLink.classList.add('active');
+      const titles={
+        acta:'Registro de Actas Estudiantiles',
+        documentos:'Gestión de Documentos',
+        'admin-grupos':'Administración de Grupos',
+        'roles-permisos':'Gestión de Profesores',
+        sites:'Administrar Sitio de Práctica'
+      };
+      document.getElementById('sectionTitle').textContent=titles[sectionType]||'Gestión de Datos';
+      document.getElementById('headerTitle').textContent=titles[sectionType]||'Gestión de Datos';
+      document.getElementById('dashboard').style.display='none';
+      document.getElementById('dataSection').style.display='block';
+      const btn=document.getElementById('btnNew');
+      const txt=document.getElementById('btnNewText');
+
+      if(sectionType==='roles-permisos'){
+        txt.textContent='Nuevo Profesor';
+        btn.onclick=()=>showProfModal('create');
+        btn.style.display='inline-flex';
+      } else if(['acta','documentos','admin-grupos'].includes(sectionType)){
+        txt.textContent='Nuevo Registro';
+        btn.onclick=()=>showModal();
+        btn.style.display='inline-flex';
+      } else if(sectionType==='sites'){
+        txt.textContent='Crear Sitio';
+        btn.onclick=()=>showModal(); // showModal detecta currentSection
+        btn.style.display='inline-flex';
+      } else {
+        btn.style.display='none';
+      }
+      loadTableData();
+    }
+
+    function loadTableData(){
+      const thead=document.getElementById('tableHeader');
+      const tbody=document.getElementById('tableBody');
+      tbody.innerHTML='';
+      let data=allData[currentSection]||[]; let headers=[]; let renderRow; 
+
+      if(currentSection==='acta'){
+        headers=['ID','Cohorte','Docente','Fecha','Archivos','Acciones'];
+        renderRow=item=>{
+          const fileCount=(item.pdfUrl?1:0)+(item.photo1?1:0)+(item.photo2?1:0);
+          return `<td>#${String(item.id).slice(-4)}</td><td>${item.group}</td><td>${item.advisorName}</td><td>${new Date(item.date).toLocaleDateString('es-ES')}</td><td>${fileCount} archivo(s)</td><td><button class="btn btn-secondary" onclick="viewRecord(${item.id})"><i class='fas fa-eye'></i></button> <button class='btn btn-danger' onclick="deleteRecord(${item.id})"><i class='fas fa-trash'></i></button></td>`;
+        };
+      } else if(currentSection==='documentos'){
+        headers=['ID','Título','Tipo','Fecha Creación','Propósito','Acciones'];
+        renderRow=item=>`<td>#${item.id}</td><td>${item.title}</td><td><span class='pill'>${item.type}</span></td><td>${new Date(item.date).toLocaleDateString('es-ES')}</td><td>${(item.purpose||'').slice(0,60)}...</td><td><button class='btn btn-danger' onclick="deleteRecord(${item.id})"><i class='fas fa-trash'></i></button></td>`;
+      } else if(currentSection==='admin-grupos'){
+        headers=['ID','Cohorte','Asesor','Fecha Creación','Acciones']; data=groups;
+        renderRow=item=>{
+          const adv=professors.find(p=>p.id===item.advisorId);
+          return `<td>${item.id}</td><td>${item.name}</td><td>${adv?adv.name:'Sin asignar'}</td><td>${new Date(item.date).toLocaleDateString('es-ES')}</td><td><button class='btn btn-danger' onclick="deleteRecord('${item.id}')"><i class='fas fa-trash'></i></button></td>`;
+        };
+      } else if(currentSection==='roles-permisos'){
+        headers=['Foto','Nombre','Perfil','Acciones']; data=professors;
+        renderRow=item=>`<td>${item.photo?`<img src='${item.photo}' style='width:40px;height:40px;border-radius:50%'>`:`<div class='user-avatar' style='width:40px;height:40px'>${item.name.charAt(0)}</div>`}</td><td>${item.name}</td><td>${item.profile||''}</td><td><button class='btn btn-primary' onclick="editProfessor('${item.id}')"><i class='fas fa-edit'></i></button> <button class='btn btn-danger' onclick="deleteRecord('${item.id}')"><i class='fas fa-trash'></i></button></td>`;
+      } else if(currentSection==='sites'){
+        headers=['Empresa','Departamento','Contacto','Profesor','Acciones'];
+        data = allData.sites || [];
+        renderRow = item => {
+          const prof = (professors || []).find(p => p.id === item.professorId);
+          return `
+            <td>${item.companyName || ''}</td>
+            <td>${item.department || ''}</td>
+            <td>${item.contactName || ''}</td>
+            <td>${prof ? prof.name : 'N/A'}</td>
+            <td>
+              <button class='btn btn-danger' onclick="deleteRecord('${item.id}')">
+                <i class='fas fa-trash'></i>
+              </button>
+            </td>`;
+        };
+      }
+
+      thead.innerHTML=`<tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr>`;
+      const start=(currentPage-1)*itemsPerPage; const pageData=data.slice(start,start+itemsPerPage);
+      if(!pageData.length){
+        tbody.innerHTML=`<tr><td colspan='${headers.length}' style='text-align:center;padding:1.5rem'>No hay registros.</td></tr>`;
+      } else {
+        pageData.forEach(it=>{const tr=document.createElement('tr'); tr.innerHTML=renderRow(it); tbody.appendChild(tr);});
+      }
+      updatePagination(data.length);
+    }
+
+    function updatePagination(total){
+      const totalPages=Math.max(1,Math.ceil(total/itemsPerPage));
+      currentPage=Math.min(currentPage,totalPages);
+      document.getElementById('pageInfo').textContent=`Página ${currentPage} de ${totalPages}`;
+      document.getElementById('prevBtn').disabled=currentPage===1;
+      document.getElementById('nextBtn').disabled=currentPage===totalPages;
+    }
+    function prevPage(){if(currentPage>1){currentPage--;loadTableData();}}
+    function nextPage(){
+      const total=(currentSection==='admin-grupos'?groups.length:(allData[currentSection]?allData[currentSection].length:0));
+      const totalPages=Math.max(1,Math.ceil(total/itemsPerPage));
+      if(currentPage<totalPages){currentPage++;loadTableData();}
+    }
+
+    function showModal(){
+      const form=document.getElementById('dataForm'); form.reset();
+      ['photoPreview1','photoPreview2'].forEach(pid=>{const p=document.getElementById(pid); if(!p) return; p.style.display='none'; p.src=''; if(p.nextElementSibling) p.nextElementSibling.style.display='flex';});
+      const hide=(ids)=>ids.forEach(id=>document.getElementById(id).style.display='none');
+      const show=(ids)=>ids.forEach(id=>document.getElementById(id).style.display='block');
+      document.getElementById('pdfFileName').textContent='Seleccionar PDF';
+      ['recordTitle','recordType','recordGroup','recordAdvisor','recordDate','recordDescription','linkedDoc','siteCompanyName','siteDepartment','siteContactName','siteProfessor'].forEach(id=>{const el=document.getElementById(id); if(el) el.required=false;});
+
+      if(currentSection==='acta'){
+        document.getElementById('modalTitle').textContent='Nuevo Registro de Acta';
+        show(['formRowDocLink','formGroupType','formGroupGroup','formGroupAdvisor','formGroupDate','formGroupActaDetails','formRowFiles']);
+        hide(['formGroupTitle','formGroupDescription','formGroupGroupExtras','formGroupSiteDetails']);
+        document.getElementById('linkedDoc').required=true;
+        document.getElementById('recordType').required=true;
+        document.getElementById('recordGroup').required=true;
+        document.getElementById('recordAdvisor').required=true;
+        document.getElementById('recordDate').required=true;
+        document.getElementById('recordType').value='Acta Estudiantes';
+        fillLinkedDocSelect(); fillGroupSelect(); populateAdvisorDropdown();
+      }else if(currentSection==='documentos'){
+        document.getElementById('modalTitle').textContent='Nuevo Documento';
+        show(['formGroupTitle','formGroupType','formGroupDate','formGroupDescription']);
+        hide(['formRowDocLink','formGroupGroup','formGroupAdvisor','formGroupActaDetails','formRowFiles','formGroupGroupExtras','formGroupSiteDetails']);
+        document.getElementById('labelTitle').textContent='Título del documento';
+        document.getElementById('labelDescription').textContent='Propósito del documento';
+        document.getElementById('recordTitle').required=true; 
+        document.getElementById('recordType').required=true; 
+        document.getElementById('recordDate').required=true; 
+        document.getElementById('recordDescription').required=true;
+      }else if(currentSection==='admin-grupos'){
+        document.getElementById('modalTitle').textContent='Nuevo Grupo / Cohorte';
+        show(['formGroupTitle','formGroupDate','formGroupDescription','formGroupGroupExtras']);
+        hide(['formRowDocLink','formGroupType','formGroupGroup','formGroupAdvisor','formGroupActaDetails','formRowFiles','formGroupSiteDetails']);
+        document.getElementById('labelTitle').textContent='Nombre de grupo / cohorte (ej. 2025-2)';
+        document.getElementById('labelDescription').textContent='Características, condiciones y elementos a tener en cuenta';
+        document.getElementById('recordTitle').required=true; 
+        document.getElementById('recordDate').required=true; 
+        populateGroupAdvisorDropdown();
+      }else if(currentSection==='sites'){
+        // --- Modal para Sitios de Práctica ---
+        document.getElementById('modalTitle').textContent='Crear Sitio de Práctica';
+        show(['formGroupSiteDetails']);
+        hide(['formRowDocLink','formGroupType','formGroupGroup','formGroupAdvisor','formGroupDate','formGroupActaDetails','formRowFiles','formGroupTitle','formGroupDescription','formGroupGroupExtras']);
+        // Requisitos
+        document.getElementById('siteCompanyName').required = true;
+        document.getElementById('siteContactName').required = true;
+        document.getElementById('siteProfessor').required = true;
+        populateSiteProfessorDropdown();
+      }
+      document.getElementById('dataModal').style.display='flex';
+    }
+
+    function hideModal(){document.getElementById('dataModal').style.display='none'}
+
+    function handleFormSubmit(e){
+      e.preventDefault();
+      try{
+        if(currentSection==='acta'){
+          const linkedDocId=Number(document.getElementById('linkedDoc').value);
+          const advisorId=document.getElementById('recordAdvisor').value;
+          const groupName=document.getElementById('recordGroup').value;
+          const dateVal=document.getElementById('recordDate').value;
+          if(!linkedDocId||!advisorId||!groupName||!dateVal){showNotification('Debe seleccionar documento base, docente, cohorte y fecha.','error');return;}
+          const advisor=professors.find(p=>p.id===advisorId);
+          const newActa={
+            id:Date.now(),linkedDocId,
+            type:document.getElementById('recordType').value||'Acta Estudiantes',
+            group:groupName,advisorId,advisorName:advisor?advisor.name:'N/A',date:dateVal,
+            logros:document.getElementById('recordLogros').value,
+            acuerdos:document.getElementById('recordAcuerdos').value,
+            sintesis:document.getElementById('recordSintesis').value,
+            pdfUrl:document.getElementById('actaPdf').files[0]?URL.createObjectURL(document.getElementById('actaPdf').files[0]):null,
+            photo1:document.getElementById('photo1').files[0]?URL.createObjectURL(document.getElementById('photo1').files[0]):null,
+            photo2:document.getElementById('photo2').files[0]?URL.createObjectURL(document.getElementById('photo2').files[0]):null
+          };
+          if(!allData.acta) allData.acta=[];
+          allData.acta.push(newActa);
+        } else if(currentSection==='documentos'){
+          const title=document.getElementById('recordTitle').value;
+          const type=document.getElementById('recordType').value;
+          const date=document.getElementById('recordDate').value;
+          const purpose=document.getElementById('recordDescription').value;
+          if(!title||!type||!date||!purpose){showNotification('Título, tipo, fecha y propósito son obligatorios.','error');return;}
+          allData.documentos.push({id:Date.now()%100000,title,type,date,purpose});
+        } else if(currentSection==='admin-grupos'){
+          const name=document.getElementById('recordTitle').value;
+          const date=document.getElementById('recordDate').value;
+          const features=document.getElementById('recordDescription').value;
+          const advisorId=document.getElementById('groupAdvisor').value||null;
+          if(!name||!date){showNotification('Nombre de cohorte y fecha son obligatorios.','error');return;}
+          groups.push({id:`G-${Date.now()%100000}`,name,date,description:features,features,advisorId});
+        } else if(currentSection==='sites'){
+          // --- Crear Sitio de Práctica ---
+          const companyName = document.getElementById('siteCompanyName').value.trim();
+          const department  = document.getElementById('siteDepartment').value.trim();
+          const contactName = document.getElementById('siteContactName').value.trim();
+          const professorId = document.getElementById('siteProfessor').value;
+          if(!companyName || !contactName || !professorId){
+            showNotification('Empresa, contacto y profesor son obligatorios.','error'); return;
+          }
+          if(!allData.sites) allData.sites = [];
+          allData.sites.push({
+            id: `S-${Date.now()%100000}`,
+            companyName, department, contactName, professorId
+          });
+        }
+        hideModal(); loadTableData(); showNotification('Registro guardado exitosamente','success');
+      }catch(err){console.error(err); showNotification('Ocurrió un error al guardar. Revisa los campos.','error');}
+    }
+
+    function fillLinkedDocSelect(){
+      const sel=document.getElementById('linkedDoc');
+      sel.innerHTML='<option value="">-- Seleccionar Documento --</option>'+ allData.documentos.map(d=>`<option value="${d.id}">${d.title} — ${d.type} (${new Date(d.date).toLocaleDateString('es-ES')})</option>`).join('');
+    }
+    function fillGroupSelect(){
+      const sel=document.getElementById('recordGroup');
+      sel.innerHTML='<option value="">-- Seleccionar Cohorte --</option>'+ groups.map(g=>`<option value="${g.name}">${g.name}</option>`).join('');
+    }
+    function populateAdvisorDropdown(){
+      const sel=document.getElementById('recordAdvisor');
+      sel.innerHTML='<option value="">-- Seleccionar Docente --</option>'+ professors.map(p=>`<option value="${p.id}">${p.name}</option>`).join('');
+    }
+    function populateGroupAdvisorDropdown(){
+      const sel=document.getElementById('groupAdvisor');
+      sel.innerHTML='<option value="">-- Seleccionar Asesor --</option>'+ professors.map(p=>`<option value="${p.id}">${p.name}</option>`).join('');
+    }
+    function populateSiteProfessorDropdown(){
+      const sel=document.getElementById('siteProfessor');
+      sel.innerHTML = '<option value="">-- Seleccionar Profesor --</option>' + professors.map(p=>`<option value="${p.id}">${p.name}</option>`).join('');
+    }
+
+    function handleLinkedDocChange(){
+      const doc=allData.documentos.find(d=>d.id==document.getElementById('linkedDoc').value);
+      if(doc) document.getElementById('recordDate').value=doc.date;
+    }
+
+    function viewRecord(id){
+      if(currentSection!=='acta')return;
+      const rec=allData.acta.find(a=>a.id===id);
+      if(!rec){showNotification('Registro no encontrado','error');return;}
+      const baseDoc=allData.documentos.find(d=>d.id===rec.linkedDocId);
+      document.getElementById('previewTitle').textContent=`Vista Previa del Acta — Cohorte ${rec.group}`;
+      document.getElementById('previewPdfFrame').src=rec.pdfUrl||'';
+      document.getElementById('previewLogros').textContent=rec.logros||'—';
+      document.getElementById('previewAcuerdos').textContent=rec.acuerdos||'—';
+      document.getElementById('previewSintesis').textContent=rec.sintesis||'—';
+      const details=`<p><strong>Tipo:</strong> ${rec.type}</p>
+        <p><strong>Cohorte:</strong> ${rec.group}</p>
+        <p><strong>Docente:</strong> ${rec.advisorName}</p>
+        <p><strong>Fecha:</strong> ${new Date(rec.date).toLocaleDateString('es-ES')}</p>
+        ${baseDoc?`<p><strong>Propósito (del documento base):</strong><br>${baseDoc.purpose||'—'}</p>`:''}`;
+      document.getElementById('previewGeneralDetails').innerHTML=details;
+      const photos=[];
+      if(rec.photo1) photos.push(`<img src='${rec.photo1}' style='width:100%;border-radius:8px;margin:.25rem 0'>`);
+      if(rec.photo2) photos.push(`<img src='${rec.photo2}' style='width:100%;border-radius:8px;margin:.25rem 0'>`);
+      document.getElementById('previewPhotos').innerHTML=photos.join('');
+      document.getElementById('previewModal').style.display='flex';
+    }
+    function hidePreviewModal(){document.getElementById('previewModal').style.display='none'}
+
+    function editProfessor(id){showProfModal('edit',id)}
+
+    function deleteRecord(id){
+      if(!confirm('¿Eliminar este registro?')) return;
+      if(currentSection==='acta') allData.acta=allData.acta.filter(a=>a.id!==id);
+      else if(currentSection==='documentos') allData.documentos=allData.documentos.filter(d=>d.id!==id);
+      else if(currentSection==='admin-grupos') groups=groups.filter(g=>g.id!==id);
+      else if(currentSection==='roles-permisos') professors=professors.filter(p=>p.id!==id);
+      else if(currentSection==='sites') allData.sites=(allData.sites||[]).filter(s=>String(s.id)!==String(id));
+      loadTableData(); showNotification('Registro eliminado','success');
+    }
+
+    function showProfModal(mode,id){
+      const form=document.getElementById('profForm'); form.reset();
+      const title=document.getElementById('profModalTitle');
+      if(mode==='edit'&&id){
+        title.textContent='Editar Profesor';
+        const p=professors.find(x=>x.id===id);
+        if(p){
+          document.getElementById('profName').value=p.name;
+          document.getElementById('profEmail').value=p.email;
+          document.getElementById('profSpecialty').value=p.specialty||'';
+          document.getElementById('profCv').value=p.cv||'';
+          document.getElementById('profProfile').value=p.profile||'';
+          document.getElementById('profRole').value=p.role||'profesor';
+        }
+      } else {
+        title.textContent='Registrar Profesor';
+      }
+      document.getElementById('profModal').style.display='flex';
+    }
+    function hideProfModal(){document.getElementById('profModal').style.display='none'}
+
+    function saveProfessor(e){
+      e.preventDefault();
+      const name=document.getElementById('profName').value;
+      const email=document.getElementById('profEmail').value;
+      const specialty=document.getElementById('profSpecialty').value;
+      const cv=document.getElementById('profCv').value;
+      const profile=document.getElementById('profProfile').value;
+      const role=document.getElementById('profRole').value;
+      const photoFile=document.getElementById('profPhoto').files[0];
+      if(!name||!email){showNotification('Nombre y email son obligatorios','error');return;}
+      const finalize=(photoUrl)=>{
+        if(document.getElementById('profModalTitle').textContent.includes('Editar')){
+          const idx=professors.findIndex(p=>p.email===email||p.name===name);
+          if(idx>-1){
+            professors[idx]={...professors[idx],name,email,specialty,cv,profile,role};
+            if(photoUrl!==undefined) professors[idx].photo=photoUrl;
+          }
+        } else {
+          professors.push({id:`P-${Date.now()}`,name,email,specialty,cv,profile,role,photo:photoUrl||null});
+        }
+        hideProfModal(); loadTableData(); showNotification('Profesor guardado.','success');
+      };
+      if(photoFile){
+        const r=new FileReader();
+        r.onload=e=>finalize(e.target.result);
+        r.readAsDataURL(photoFile);
+      } else { finalize(null); }
+    }
+
+    function previewImage(e,id){
+      const f=e.target.files[0]; if(!f) return;
+      const r=new FileReader(); const prev=document.getElementById(id);
+      const cont=prev.closest('.file-upload-box').querySelector('.upload-content');
+      r.onload=ev=>{prev.src=ev.target.result; prev.style.display='block'; if(cont) cont.style.display='none';};
+      r.readAsDataURL(f);
+    }
+    function previewFileName(e,id){
+      const f=e.target.files[0];
+      document.getElementById(id).textContent=f?f.name:'Seleccionar PDF';
+    }
+    function showNotification(msg,type='info'){
+      const n=document.createElement('div');
+      n.textContent=msg;
+      n.style.position='fixed'; n.style.right='16px'; n.style.bottom='16px';
+      n.style.padding='10px 14px'; n.style.borderRadius='10px';
+      n.style.color='#fff';
+      n.style.background=type==='success'?'#38a169':(type==='error'?'#e53e3e':'#4a5568');
+      n.style.boxShadow='0 10px 20px rgba(0,0,0,.15)';
+      document.body.appendChild(n);
+      setTimeout(()=>n.remove(),2200);
+    }
+  </script>
+</body>
+</html>
